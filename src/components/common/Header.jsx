@@ -1,11 +1,13 @@
-import { Flex, Text, Drawer, Button, Divider, Container } from '@mantine/core';
+import { Flex, Text, Button } from '@mantine/core';
 import { GoSearch } from 'react-icons/go';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useDisclosure } from '@mantine/hooks';
 import Menu from './Menu';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   const [openedMenu, { open: openMenu, close: closeMenu }] = useDisclosure(false);
+  const [openedSearch, { open: openSearch, close: closeSearch }] = useDisclosure(false);
 
   return (
     <>
@@ -15,7 +17,7 @@ const Header = () => {
             CulPop
           </Text>
           <Flex>
-            <Button variant="transparent">
+            <Button onClick={openSearch} variant="transparent">
               <GoSearch size={25} color="white" />
             </Button>
             <Button onClick={openMenu} variant="transparent">
@@ -25,6 +27,7 @@ const Header = () => {
         </Flex>
       </Flex>
       <Menu opened={openedMenu} close={closeMenu} />
+      <SearchBar opened={openedSearch} close={closeSearch} />
     </>
   );
 };
