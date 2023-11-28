@@ -16,11 +16,17 @@ const Dates = () => {
     return day;
   });
 
+  const getDayOfWeek = idx => {
+    const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dayOfWeek = date.getDay();
+    return weekdays[(dayOfWeek + idx) % 7];
+  };
+
   return (
     <>
       <Container my={40} p={0}>
         <Flex justify={'space-between'} align={'center'}>
-          {icons.map(date => (
+          {icons.map((date, idx) => (
             <ActionIcon
               key={date}
               onClick={() => handleClick(date)}
@@ -32,7 +38,7 @@ const Dates = () => {
               {date === clicked ? (
                 <Flex justify="center" align="center" direction="column">
                   <Text fz={12} fw={500}>
-                    TODAY
+                    {date === today ? 'TODAY' : getDayOfWeek(idx)}
                   </Text>
                   {date}
                 </Flex>
