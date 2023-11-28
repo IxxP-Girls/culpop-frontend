@@ -50,20 +50,12 @@ const MyInfo = () => {
           <Text>내가 작성한 글</Text>
         </Flex>
         <Container w={'100%'} h={'400px'} bg={'dark.6'} pos={'relative'} style={{ borderRadius: '10px' }} p={20}>
-          <Paper
-            m="md"
-            bg={'transparent'}
-            pos={'relative'}
-            h={'10%'}
-            style={{
-              alignItems: 'center',
-            }}>
+          <Paper m="md" pos={'relative'} h={40} bg={'dark.5'} py={10}>
             <Flex>
               <MyBoardTitle percentage={5} name={'번호'} />
               <MyBoardTitle percentage={80} name={'제목'} />
               <MyBoardTitle percentage={15} name={'편집'} />
             </Flex>
-            <Divider my={10} size={'md'} />
           </Paper>
           {posts.map((post, idx) => (
             <Paper
@@ -90,7 +82,7 @@ const MyInfo = () => {
                   <Button size="xs">삭제</Button>
                 </Group>
               </Flex>
-              <Divider my={10} />
+              <Divider my={10} color="dark.5" />
             </Paper>
           ))}
           <Pagination
