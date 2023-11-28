@@ -3,7 +3,7 @@ import { GoHome, GoHeart, GoPaperAirplane, GoSearch, GoPerson } from 'react-icon
 
 const Footer = () => {
   return (
-    <Flex justify={'center'} h={'100%'} align={'center'} bg={'#2c2c2c'}>
+    <Flex justify={'center'} h={'100%'} align={'center'} bg={'dark.6'}>
       <Flex w={960} justify={'space-between'}>
         <GoHome size={25} />
         <GoHeart size={25} />

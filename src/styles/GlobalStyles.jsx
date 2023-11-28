@@ -25,7 +25,7 @@ import semiBoldWoff2 from '../assets/fonts/Pretendard-SemiBold.woff2';
 import thinWoff from '../assets/fonts/Pretendard-Thin.woff';
 import thinWoff2 from '../assets/fonts/Pretendard-Thin.woff2';
 
-const GlobalFonts = css`
+const GlobalStyles = css`
   @font-face {
     font-family: 'Pretendard';
     font-weight: 100;
@@ -115,6 +115,12 @@ const GlobalFonts = css`
       url(${blackWoff2}) format('woff2');
     font-display: swap;
   }
+
+  * {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
-export default GlobalFonts;
+export default GlobalStyles;

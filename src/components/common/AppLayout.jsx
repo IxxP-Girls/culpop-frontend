@@ -10,7 +10,9 @@ const AppLayout = ({ children }) => {
         <Header />
       </AppShellHeader>
       <AppShellMain>
-        <Flex justify={'center'}>{children}</Flex>
+        <Flex justify={'center'}>
+          <Flex w={960}>{children}</Flex>
+        </Flex>
       </AppShellMain>
       <AppShellFooter>
         <Footer />
