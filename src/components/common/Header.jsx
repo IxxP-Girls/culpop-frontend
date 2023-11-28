@@ -4,8 +4,11 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { useDisclosure } from '@mantine/hooks';
 import Menu from './Menu';
 import SearchBar from './SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const [openedMenu, { open: openMenu, close: closeMenu }] = useDisclosure(false);
   const [openedSearch, { open: openSearch, close: closeSearch }] = useDisclosure(false);
 
@@ -13,7 +16,7 @@ const Header = () => {
     <>
       <Flex justify={'center'}>
         <Flex w={960} p={10} justify={'space-between'} h={'100%'} align={'center'}>
-          <Text fw={800} fz={26} c={'lime'}>
+          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')}>
             CulPop
           </Text>
           <Flex>

@@ -1,6 +1,11 @@
 import { Flex, Text, Drawer, Divider } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
 
 const Menu = ({ opened, close }) => {
+  const navigate = useNavigate();
+
+  const handleMypageClick = () => navigate('/mypage');
+
   return (
     <Drawer.Root
       opened={opened}
@@ -16,7 +21,7 @@ const Menu = ({ opened, close }) => {
       <Drawer.Overlay backgroundOpacity={0} />
       <Drawer.Content w={960} pos="fixed">
         <Drawer.Header>
-          <Text fw={800} fz={26} c={'lime'}>
+          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')}>
             CulPop
           </Text>
           <Drawer.CloseButton size={40} variant="transparent" />
@@ -34,7 +39,7 @@ const Menu = ({ opened, close }) => {
           <Divider my={20} />
           <Flex gap={10} direction={'column'} py={10}>
             <Text>윤 슬 회원님, 환영합니다.</Text>
-            <Text>마이페이지</Text>
+            <Text onClick={handleMypageClick}>마이페이지</Text>
             <Text>로그아웃</Text>
           </Flex>
         </Drawer.Body>
