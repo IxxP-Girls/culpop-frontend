@@ -1,4 +1,4 @@
-import Card from './Card';
+import Slide from './Slide';
 import { Carousel } from '@mantine/carousel';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 
@@ -50,7 +50,7 @@ const data = [
 const MainCarousel = () => {
   const slides = data.map(item => (
     <Carousel.Slide key={item.title}>
-      <Card {...item} />
+      <Slide {...item} />
     </Carousel.Slide>
   ));
 
@@ -59,9 +59,10 @@ const MainCarousel = () => {
       slideSize={'50%'}
       loop
       align={'start'}
-      controlSize={26}
-      nextControlIcon={<GrNext size={30} />}
-      previousControlIcon={<GrPrevious size={30} />}>
+      withIndicators
+      controlSize={40}
+      nextControlIcon={<GrNext size={25} />}
+      previousControlIcon={<GrPrevious size={25} />}>
       {slides}
     </Carousel>
   );
