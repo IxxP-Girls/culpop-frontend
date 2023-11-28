@@ -7,7 +7,7 @@ import { MantineProvider, createTheme } from '@mantine/core';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import { Global } from '@emotion/react';
-import GlobalFonts from './styles/GlobalFonts';
+import GlobalStyles from './styles/GlobalStyles';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,7 +30,7 @@ function App() {
     <RecoilRoot>
       <QueryClientProvider client={queryClient}>
         <MantineProvider theme={theme} defaultColorScheme="dark">
-          <Global styles={GlobalFonts} />
+          <Global styles={GlobalStyles} />
           <RouterProvider router={routerConfig} />
         </MantineProvider>
         <ReactQueryDevtools initialIsOpen={false} />
