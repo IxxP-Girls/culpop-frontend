@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Container, ActionIcon, Flex, Text, Divider, Button } from '@mantine/core';
 import Cards from '../common/Cards';
 import { useNavigate } from 'react-router-dom';
-import { RiMouseFill } from 'react-icons/ri';
 
 const Dates = () => {
   const navigate = useNavigate();
