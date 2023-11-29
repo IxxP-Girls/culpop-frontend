@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Container, ActionIcon, Flex, Text, Divider, Button } from '@mantine/core';
 import Cards from '../common/Cards';
+import { useNavigate } from 'react-router-dom';
+import { RiMouseFill } from 'react-icons/ri';
 
 const Dates = () => {
+  const navigate = useNavigate();
+
   const date = new Date();
   const today = date.getDate();
   const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -51,11 +55,17 @@ const Dates = () => {
       </Container>
       <Divider />
       <Container p={0}>
-        <Flex display={'flex'} justify={'flex-end'} py={20} fz={14}>
+        <Flex
+          display={'flex'}
+          justify={'flex-end'}
+          style={{ cursor: 'pointer' }}
+          py={20}
+          fz={14}
+          onClick={() => navigate('/popups')}>
           전체보기
         </Flex>
         <Cards />
-        <Button fullWidth h={45} my={20} variant="outline" color="dark.0">
+        <Button fullWidth h={45} my={20} variant="outline" color="dark.0" onClick={() => navigate('/popups')}>
           더보기
         </Button>
       </Container>

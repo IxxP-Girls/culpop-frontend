@@ -1,8 +1,10 @@
 import { Flex, Drawer, Divider, TextInput, ActionIcon, Container, Button } from '@mantine/core';
 import { GrPrevious } from 'react-icons/gr';
+import { useNavigate } from 'react-router-dom';
 const tags = ['현대', '신세계백화점', '성수', '옷', '이벤트', '키즈', '굿즈', '전시', '데이트', '포토존'];
 
 const SearchBar = ({ opened, close }) => {
+  const navigate = useNavigate();
   return (
     <Drawer.Root
       opened={opened}
@@ -33,7 +35,13 @@ const SearchBar = ({ opened, close }) => {
             ))}
           </Container>
           <Flex justify={'center'} mt={10}>
-            <Button variant="transparent" color="dark.0" td="underline" fw={200} fz={14}>
+            <Button
+              variant="transparent"
+              color="dark.0"
+              td="underline"
+              fw={200}
+              fz={14}
+              onClick={() => navigate('/popups')}>
               상세 검색
             </Button>
           </Flex>

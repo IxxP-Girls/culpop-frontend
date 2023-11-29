@@ -1,4 +1,4 @@
-import { Flex, Text, Button } from '@mantine/core';
+import { Flex, Text, ActionIcon } from '@mantine/core';
 import { GoSearch } from 'react-icons/go';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { useDisclosure } from '@mantine/hooks';
@@ -16,16 +16,16 @@ const Header = () => {
     <>
       <Flex justify={'center'}>
         <Flex w={960} p={10} justify={'space-between'} h={'100%'} align={'center'}>
-          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')}>
+          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
             CulPop
           </Text>
           <Flex>
-            <Button onClick={openSearch} variant="transparent" p={0} mr={10}>
+            <ActionIcon onClick={openSearch} variant="transparent" p={0} mr={10}>
               <GoSearch size={25} color="white" />
-            </Button>
-            <Button onClick={openMenu} variant="transparent" p={0} ml={10}>
+            </ActionIcon>
+            <ActionIcon onClick={openMenu} variant="transparent" p={0} ml={10}>
               <RxHamburgerMenu size={25} color="white" />
-            </Button>
+            </ActionIcon>
           </Flex>
         </Flex>
       </Flex>

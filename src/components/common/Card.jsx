@@ -1,4 +1,4 @@
-import { Container, Flex, Text, Title, Image, Grid } from '@mantine/core';
+import { Container, Flex, Text, Title, Image, Grid, ActionIcon } from '@mantine/core';
 import { RiMapPin2Fill, RiHeartLine } from 'react-icons/ri';
 
 const Card = ({ title, location, dates, imgUrl }) => {
@@ -22,7 +22,9 @@ const Card = ({ title, location, dates, imgUrl }) => {
         </Flex>
       </Grid.Col>
       <Grid.Col span={1}>
-        <RiHeartLine size={25} />
+        <ActionIcon variant="transparent" c={'dark.0'}>
+          <RiHeartLine size={25} />
+        </ActionIcon>
       </Grid.Col>
     </Grid>
   );
