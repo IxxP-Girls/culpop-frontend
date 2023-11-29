@@ -1,7 +1,7 @@
 import { Container, Divider, Flex, Title } from '@mantine/core';
 import Cards from '../common/Cards';
 import { useState } from 'react';
-import CustomButton from './CustomButton';
+import CustomButton from '../common/CustomButton';
 import { DatePickerInput } from '@mantine/dates';
 import { dates } from '../../constants/dates';
 import { regions } from '../../constants/regions';
@@ -42,7 +42,7 @@ const Popups = () => {
             </Title>
             {CustomButtonGroup(dates, clickDate, setClickDate)}
           </Flex>
-          <Divider my={15} />
+          <Divider my={10} />
           {DatePickerInputGroup()}
         </Container>
       </Flex>
@@ -54,7 +54,7 @@ const Popups = () => {
             </Title>
             {CustomButtonGroup(regions, clickRegion, setClickRegion)}
           </Flex>
-          <Divider my={15} />
+          <Divider my={10} />
         </Container>
       </Flex>
       <Cards />
