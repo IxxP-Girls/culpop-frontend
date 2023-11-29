@@ -59,7 +59,7 @@ const MyInfo = () => {
           </Paper>
           {posts.map((post, idx) => (
             <Paper
-              key={post.id}
+              key={idx}
               m="md"
               bg={'transparent'}
               pos={'relative'}
@@ -71,7 +71,7 @@ const MyInfo = () => {
                 <Text w={'5%'} display={'flex'} style={{ justifyContent: 'center' }}>
                   {idx + 1}
                 </Text>
-                <Text variant="h5" mr={5} i>
+                <Text variant="h5" mr={5}>
                   {post.category}
                 </Text>
                 <Text>{post.title}</Text>

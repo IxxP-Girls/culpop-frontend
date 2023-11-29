@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Container, ActionIcon, Flex, Text, Divider } from '@mantine/core';
-import Cards from './Cards';
+import { Container, ActionIcon, Flex, Text, Divider, Button } from '@mantine/core';
+import Cards from '../common/Cards';
 
 const Dates = () => {
   const date = new Date();
@@ -50,8 +50,15 @@ const Dates = () => {
         </Flex>
       </Container>
       <Divider />
-      <Cards category={'popup'} />
-      <Cards category={'exhibition'} />
+      <Container p={0}>
+        <Flex display={'flex'} justify={'flex-end'} py={20} fz={14}>
+          전체보기
+        </Flex>
+        <Cards />
+        <Button fullWidth h={45} my={20} variant="outline" color="dark.0">
+          더보기
+        </Button>
+      </Container>
     </>
   );
 };

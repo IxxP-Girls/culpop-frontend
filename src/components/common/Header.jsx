@@ -20,10 +20,10 @@ const Header = () => {
             CulPop
           </Text>
           <Flex>
-            <Button onClick={openSearch} variant="transparent">
+            <Button onClick={openSearch} variant="transparent" p={0} mr={10}>
               <GoSearch size={25} color="white" />
             </Button>
-            <Button onClick={openMenu} variant="transparent">
+            <Button onClick={openMenu} variant="transparent" p={0} ml={10}>
               <RxHamburgerMenu size={25} color="white" />
             </Button>
           </Flex>
