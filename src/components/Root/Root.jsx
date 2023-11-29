@@ -1,11 +1,12 @@
 import { Container } from '@mantine/core';
-import MainCarousel from './MainCarousel';
+import BaseCarousel from '../common/BaseCarousel';
 import Dates from './Dates';
+import { carouselData } from '../../constants/carouselData';
 
 const Root = () => {
   return (
     <Container p={0}>
-      <MainCarousel />
+      <BaseCarousel data={carouselData} />
       <Dates />
     </Container>
   );
