@@ -1,9 +1,12 @@
 import { Container, Flex, Text, Title, Image, Grid, ActionIcon } from '@mantine/core';
-import { RiMapPin2Fill, RiHeartLine } from 'react-icons/ri';
+import { TbHeart, TbHeartFilled, TbMapPin } from 'react-icons/tb';
+import { useNavigate } from 'react-router-dom';
 
 const Card = ({ title, location, dates, imgUrl }) => {
+  const navigate = useNavigate();
+
   return (
-    <Grid h={200} w={470} py={30} pos={'relative'}>
+    <Grid h={200} w={470} py={30} pos={'relative'} onClick={() => navigate('/popup')}>
       <Grid.Col span={4}>
         <Image src={imgUrl} h={140} w={140} radius={10} alt="No way!" />
       </Grid.Col>
@@ -11,7 +14,7 @@ const Card = ({ title, location, dates, imgUrl }) => {
         <Flex direction={'column'}>
           <Title order={5}>{title}</Title>
           <Container display={'flex'} m={0} p={0} style={{ alignItems: 'center', gap: 5 }}>
-            <RiMapPin2Fill />
+            <TbMapPin />
             <Text size="md" fz={14}>
               {location}
             </Text>
@@ -23,7 +26,7 @@ const Card = ({ title, location, dates, imgUrl }) => {
       </Grid.Col>
       <Grid.Col span={1}>
         <ActionIcon variant="transparent" c={'dark.0'}>
-          <RiHeartLine size={25} />
+          <TbHeart size={25} />
         </ActionIcon>
       </Grid.Col>
     </Grid>

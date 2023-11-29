@@ -4,14 +4,15 @@ const CustomButton = ({ data, clicked, setClicked }) => {
   return (
     <Button
       w={'auto'}
-      onClick={() => setClicked(data)}
+      onClick={setClicked ? () => setClicked(data) : undefined}
       h={34}
       py={8}
-      px={20}
+      px={15}
       radius={20}
       fz={14}
       fw={400}
-      mr={10}
+      mr={7}
+      my={5}
       color={clicked === data ? '' : 'dark.0'}
       variant={clicked === data ? 'filled' : 'outline'}>
       {data}

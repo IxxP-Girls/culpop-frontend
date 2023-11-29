@@ -1,8 +1,4 @@
-import Slide from './Slide';
-import { Carousel } from '@mantine/carousel';
-import { GrNext, GrPrevious } from 'react-icons/gr';
-
-const data = [
+export const carouselData = [
   {
     image:
       'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
@@ -47,25 +43,26 @@ const data = [
   },
 ];
 
-const MainCarousel = () => {
-  const slides = data.map(item => (
-    <Carousel.Slide key={item.title}>
-      <Slide {...item} />
-    </Carousel.Slide>
-  ));
-
-  return (
-    <Carousel
-      slideSize={'50%'}
-      loop
-      align={'start'}
-      withIndicators
-      controlSize={40}
-      nextControlIcon={<GrNext size={25} />}
-      previousControlIcon={<GrPrevious size={25} />}>
-      {slides}
-    </Carousel>
-  );
-};
-
-export default MainCarousel;
+export const tags = [
+  '가치공간',
+  '팝업스토어',
+  '브랜드',
+  '마조네',
+  '코이무이',
+  '오디에르',
+  '트리마치',
+  '디어리쉬',
+  '무르',
+  '제리쉬',
+  '더블쿼츠',
+  '러브어스유',
+  '오앨',
+  '더발론',
+  '디자이너',
+  '성수',
+  '블랙프라이데이',
+  '세일',
+  '쇼핑',
+  '의류',
+  '옷',
+];
