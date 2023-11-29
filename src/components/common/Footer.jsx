@@ -9,8 +9,8 @@ const Footer = () => {
   return (
     <Flex justify={'center'} h={'100%'} align={'center'} bg={'dark.6'}>
       <Flex w={960} justify={'space-between'} px={20}>
-        <ActionIcon variant="transparent" color="dark.0">
-          <TbHome size={30} onClick={() => navigate('/')} />
+        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/')}>
+          <TbHome size={30} />
         </ActionIcon>
         <ActionIcon variant="transparent" color="dark.0">
           <FaRegRectangleList size={30} />
@@ -18,11 +18,11 @@ const Footer = () => {
         <ActionIcon variant="transparent" color="dark.0">
           <TbSend size={30} />
         </ActionIcon>
-        <ActionIcon variant="transparent" color="dark.0">
+        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/popups')}>
           <TbListSearch size={30} />
         </ActionIcon>
-        <ActionIcon variant="transparent" color="dark.0">
-          <TbUserHeart size={30} onClick={() => navigate('/mypage')} />
+        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/mypage')}>
+          <TbUserHeart size={30} />
         </ActionIcon>
       </Flex>
     </Flex>
