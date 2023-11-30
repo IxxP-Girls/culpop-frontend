@@ -1,48 +1,16 @@
-import {
-  Container,
-  Flex,
-  Text,
-  Title,
-  TextInput,
-  rem,
-  PasswordInput,
-  Button,
-  Grid,
-  Divider,
-  Image,
-  ActionIcon,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { Container, Flex, Text, Title, Button, Grid, Divider, Image, ActionIcon } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
+import SignInOnlyCulPop from './SignInOnlyCulPop';
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const icon = <MdOutlineAlternateEmail style={{ width: rem(16), height: rem(16) }} />;
-  const [visible, { toggle }] = useDisclosure(false);
 
   return (
     <Flex w={'100%'} direction={'column'}>
       <Title order={2} w={'100%'} style={{ borderBottom: '1px solid' }} py={20}>
         로그인
       </Title>
-      <Container w={500} p={50}>
-        <Flex align={'center'}>
-          <Title order={5} w={100}>
-            이메일
-          </Title>
-          <TextInput w={300} my="md" rightSectionPointerEvents="none" rightSection={icon} placeholder="Your email" />
-        </Flex>
-        <Flex align={'center'}>
-          <Title order={5} w={100}>
-            비밀번호
-          </Title>
-          <PasswordInput w={300} my={'md'} defaultValue="secret" visible={visible} onVisibilityChange={toggle} />
-        </Flex>
-        <Button w={'100%'} size="md" my={20}>
-          로그인
-        </Button>
-      </Container>
+      <SignInOnlyCulPop />
       <Grid w={'100%'}>
         <Grid.Col span={4}>
           <Divider mt={12} />
