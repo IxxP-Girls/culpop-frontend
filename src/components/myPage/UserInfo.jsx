@@ -4,7 +4,7 @@ import MyInterests from './MyInterests';
 
 const UserInfo = () => {
   return (
-    <Tabs color="lime" defaultValue={'info'} w={'100%'}>
+    <Tabs color="green" defaultValue={'info'} w={'100%'}>
       <Tabs.List mb={30}>
         <Tabs.Tab value="info" w={'50%'}>
           내 정보

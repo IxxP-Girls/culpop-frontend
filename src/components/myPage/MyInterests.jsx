@@ -6,7 +6,7 @@ const MyInterests = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
 
   return (
-    <Tabs color="lime" defaultValue="all" variant="pills">
+    <Tabs color="green" defaultValue="all" variant="pills">
       <Tabs.List>
         <Tabs.Tab value="all" leftSection={<FaList style={iconStyle} />}>
           전체

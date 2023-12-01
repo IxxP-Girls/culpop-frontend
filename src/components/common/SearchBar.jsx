@@ -15,7 +15,7 @@ const SearchBar = ({ opened, close }) => {
           '--drawer-justify': 'center',
         },
       }}
-      shadow="0 2px lime"
+      shadow="0 2px green"
       size={'xs'}>
       <Drawer.Overlay backgroundOpacity={0} />
       <Drawer.Content w={960} pos="fixed" h={220}>

@@ -16,12 +16,12 @@ const Menu = ({ opened, close }) => {
           '--drawer-justify': 'center',
         },
       }}
-      shadow="0 2px lime"
+      shadow="0 2px green"
       size={'md'}>
       <Drawer.Overlay backgroundOpacity={0} />
       <Drawer.Content w={960} pos="fixed">
         <Drawer.Header>
-          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          <Text fw={800} fz={26} c={'green'} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
             CulPop
           </Text>
           <Drawer.CloseButton size={40} variant="transparent" />

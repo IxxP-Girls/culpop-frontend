@@ -5,6 +5,7 @@ import PopupsPage from '../pages/PopupsPage';
 import DetailPage from '../pages/DetailPage';
 import SignInPage from '../pages/SignInPage';
 import SignUpPage from '../pages/SignUpPage';
+import ChatPage from '../pages/ChatPage';
 
 const routerConfig = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const routerConfig = createBrowserRouter([
   {
     path: '/popup',
     element: <DetailPage />,
+  },
+  {
+    path: '/chat',
+    element: <ChatPage />,
   },
 ]);
 

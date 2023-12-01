@@ -24,7 +24,7 @@ const MyInfo = () => {
           alignItems: 'center',
           boxShadow: '0 0 2px  #fff',
           borderRadius: 50,
-          color: 'lime',
+          color: 'green',
         }}>
         C
       </Container>
