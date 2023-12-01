@@ -16,7 +16,7 @@ const Header = () => {
     <>
       <Flex justify={'center'}>
         <Flex w={960} p={10} justify={'space-between'} h={'100%'} align={'center'}>
-          <Text fw={800} fz={26} c={'lime'} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
+          <Text fw={800} fz={26} c={'green'} onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
             CulPop
           </Text>
           <Flex>
