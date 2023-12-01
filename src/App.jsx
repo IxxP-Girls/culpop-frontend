@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
 
 const theme = createTheme({
   fontFamily: 'Pretendard, sans-serif',
-  primaryColor: 'lime',
+  primaryColor: 'green',
   colors: {
     dark: ['#fff', '#adadad', '#828282', '#6c6c6c', '#525252', '#404040', '#2c2c2c', '#121212', '#01010A', '#000000'],
   },

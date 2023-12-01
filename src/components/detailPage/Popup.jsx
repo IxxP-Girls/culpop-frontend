@@ -22,7 +22,7 @@ import CustomButton from '../common/CustomButton';
 
 const Popup = () => {
   return (
-    <Container m={0} pb={30}>
+    <Container m={0} pb={30} px={0}>
       <BaseCarousel data={carouselData} />
       <Flex align={'center'} justify={'space-between'} my={20}>
         <Text fz={20}>정보</Text>
