@@ -12,7 +12,7 @@ const Footer = () => {
         <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/')}>
           <TbHome size={30} />
         </ActionIcon>
-        <ActionIcon variant="transparent" color="dark.0">
+        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/boards')}>
           <FaRegRectangleList size={30} />
         </ActionIcon>
         <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/chat')}>

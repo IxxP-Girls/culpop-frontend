@@ -30,7 +30,7 @@ const Menu = ({ opened, close }) => {
           <Text fw={700} fz={24} py={10} style={{ cursor: 'pointer' }} onClick={() => navigate('/popups')}>
             PopUp
           </Text>
-          <Text fw={700} fz={24} py={10} style={{ cursor: 'pointer' }}>
+          <Text fw={700} fz={24} py={10} style={{ cursor: 'pointer' }} onClick={() => navigate('/boards')}>
             Board
           </Text>
           <Divider my={20} />
