@@ -3,73 +3,7 @@ import { FaBars, FaUsers, FaEllipsisH, FaStar, FaRegMoneyBillAlt } from 'react-i
 import { IoSearchSharp } from 'react-icons/io5';
 import BoardItem from './BoardItem';
 import { useNavigate } from 'react-router-dom';
-
-const posts = [
-  { category: '후기', title: '블랙핑크 콘서트 후기', counts: '8', writer: 'test', timestamp: 1698852838700 },
-  {
-    category: '동행 구해요',
-    title: '도라에몽 팝업 같이 가실 분',
-    counts: '9',
-    writer: 'test2',
-    timestamp: 1698852899900,
-  },
-  {
-    category: '자유롭게 소통해요',
-    title: '다들 요즘 뭐 하시고 사나요?',
-    counts: '11',
-    writer: 'test3',
-    timestamp: 1698862838701,
-  },
-  {
-    category: '동행 구해요',
-    title: '다들 요즘 뭐 하시고 사나요?',
-    counts: '11',
-    writer: 'test3',
-    timestamp: 1698862838702,
-  },
-  {
-    category: '자유롭게 소통해요',
-    title: '요즘 볼만한 팝업 뭐가 있을까요?',
-    counts: '11',
-    writer: 'test2',
-    timestamp: 1698862838703,
-  },
-  {
-    category: '후기',
-    title: '도라에몽 팝업 후기',
-    counts: '25',
-    writer: 'test2',
-    timestamp: 1698862838704,
-  },
-  {
-    category: '자유소통',
-    title: '다들 요즘 뭐 하시고 사나요?',
-    counts: '11',
-    writer: 'test',
-    timestamp: 1698862838705,
-  },
-  {
-    category: '거래해요',
-    title: '도라에몽 팝업 표 양도합니다.',
-    counts: '11',
-    writer: 'test2',
-    timestamp: 1698862838760,
-  },
-  {
-    category: '거래해요',
-    title: '촉촉한 초코칩 팝업 25일 티켓 양도합니다',
-    counts: '11',
-    writer: 'test2',
-    timestamp: 1698862838770,
-  },
-  {
-    category: '자유소통',
-    title: '다들 요즘 뭐 하시고 사나요?',
-    counts: '11',
-    writer: 'test',
-    timestamp: 1698862838788,
-  },
-];
+import { postData } from '../../../constants/mockData';
 
 const BoardList = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
@@ -83,7 +17,16 @@ const BoardList = () => {
           작성하기
         </Button>
       </Flex>
-      <Tabs defaultValue="all" w={'100%'} pos={'relative'} variant="pills">
+      <Tabs
+        defaultValue="all"
+        w={'100%'}
+        pos={'relative'}
+        variant="pills"
+        styles={{
+          tab: {
+            fontSize: 16,
+          },
+        }}>
         <Tabs.List grow justify="space-between" my={10}>
           <Tabs.Tab value="all" leftSection={<FaBars style={iconStyle} />}>
             전체
@@ -111,24 +54,24 @@ const BoardList = () => {
             },
           }}>
           <Grid.Col span={2}>
-            <Text>카테고리</Text>
+            <Text fz={14}>카테고리</Text>
           </Grid.Col>
           <Grid.Col span={5}>
-            <Text>글 제목</Text>
+            <Text fz={14}>글 제목</Text>
           </Grid.Col>
           <Grid.Col span={1}>
-            <Text>조회수</Text>
+            <Text fz={14}>조회수</Text>
           </Grid.Col>
           <Grid.Col span={2}>
-            <Text>작성자</Text>
-          </Grid.Col>{' '}
+            <Text fz={14}>작성자</Text>
+          </Grid.Col>
           <Grid.Col span={2}>
-            <Text>작성일</Text>
+            <Text fz={14}>작성일</Text>
           </Grid.Col>
         </Grid>
         <Divider />
         <Tabs.Panel value="all">
-          {posts.map(({ category, title, counts, writer, timestamp }, idx) => (
+          {postData.map(({ category, title, counts, writer, timestamp }) => (
             <BoardItem
               category={category}
               title={title}
@@ -144,7 +87,7 @@ const BoardList = () => {
         <Tabs.Panel value="etc"></Tabs.Panel>
         <Pagination
           py={15}
-          total={posts.length / 10}
+          total={postData.length / 10}
           boundaries={1}
           defaultValue={1}
           display={'flex'}
