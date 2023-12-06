@@ -1,7 +1,6 @@
 import { Button } from '@mantine/core';
-import useScrollY from '../../hooks/useScollY';
 import { RiArrowUpSLine } from 'react-icons/ri';
-import { HiArrowUp } from 'react-icons/hi';
+import useScrollY from '../../hooks/useScollY';
 
 const ArrowUpBtn = ({ boundary = 300 }) => {
   const yPos = useScrollY();
