@@ -4,6 +4,7 @@ import YourTalk from './YourTalk';
 import { FaUserCircle } from 'react-icons/fa';
 import { GoPaperAirplane } from 'react-icons/go';
 import { useRef, useState } from 'react';
+import { chattingHeight } from '../../constants/heights';
 
 const dataChat = {
   messageId: 1,
@@ -39,8 +40,11 @@ const ChatRoom = () => {
 
   return (
     <>
-      <Container display={'flex'} mt={10} w={'100%'} style={{ overflow: 'auto', height: 600, flexDirection: 'column' }}>
-        <Flex gap={5} align={'center'}></Flex>
+      <Container
+        display={'flex'}
+        mt={10}
+        w={'100%'}
+        style={{ overflow: 'auto', height: chattingHeight, flexDirection: 'column' }}>
         {messages.map(({ sender, timeStamp, message }) => {
           if (sender === userName) {
             return <MyTalk time={timeStamp} message={message} key={timeStamp} />;
@@ -53,7 +57,7 @@ const ChatRoom = () => {
         ref={textRef}
         h={'auto'}
         w={'100%'}
-        p={15}
+        my={15}
         value={text}
         onChange={e => setText(e.target.value)}
         onKeyDown={handleEnterDown}

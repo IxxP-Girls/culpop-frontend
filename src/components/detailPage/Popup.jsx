@@ -1,5 +1,5 @@
 import { Container, Flex, Text, ActionIcon, Divider, Anchor } from '@mantine/core';
-import { carouselData, tags } from '../../constants/carouselData';
+import { carouselData, tags } from '../../constants/mockData';
 import BaseCarousel from '../common/BaseCarousel';
 import {
   TbHeart,

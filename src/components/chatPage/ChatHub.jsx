@@ -6,7 +6,7 @@ import ChatRoom from './ChatRoom';
 const ChatHub = () => {
   return (
     <Flex w={'100%'} direction={'column'} h={noCommonHeight} pos={'relative'}>
-      <Title w={'100%'} order={3} style={{ borderBottom: '1px solid' }} p={10}>
+      <Title w={'100%'} order={4} style={{ borderBottom: '1px solid' }} p={10}>
         OO 님과의 대화 (채팅 목록)
       </Title>
       <Grid w={'100%'}>

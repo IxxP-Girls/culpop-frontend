@@ -1,6 +1,7 @@
 import { Container, Divider, Flex, Text, Paper, Button, Group, Pagination } from '@mantine/core';
 import { PiPencilLine } from 'react-icons/pi';
 import MyBoardTitle from './MyBoardTitle';
+import { useNavigate } from 'react-router-dom';
 
 const posts = [
   { id: 1, category: '[동행]', title: '블랙핑크 콘서트 같이 가실 분' },
@@ -11,6 +12,8 @@ const posts = [
 ];
 
 const MyInfo = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <Container
@@ -76,7 +79,7 @@ const MyInfo = () => {
                 </Text>
                 <Text>{post.title}</Text>
                 <Group pos={'absolute'} right={0} gap={5}>
-                  <Button size="xs" color="dark.4">
+                  <Button size="xs" color="dark.4" onClick={() => navigate('/edit')}>
                     수정
                   </Button>
                   <Button size="xs">삭제</Button>

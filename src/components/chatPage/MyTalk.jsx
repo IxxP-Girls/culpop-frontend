@@ -7,7 +7,7 @@ const MyTalk = ({ time, message }) => {
       <Text fz={12} w={50}>
         {formatDate(time)}
       </Text>
-      <Paper shadow="sm" radius="lg" p="md" bg={'green'} py={12}>
+      <Paper shadow="sm" radius="lg" p="md" bg={'green'} py={10}>
         <Text>{message}</Text>
       </Paper>
     </Flex>

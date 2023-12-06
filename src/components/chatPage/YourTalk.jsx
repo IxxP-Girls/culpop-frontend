@@ -9,7 +9,7 @@ const YourTalk = ({ time, message }) => {
       display={'inline-flex'}
       style={{ alignSelf: 'flex-start', alignItems: 'center' }}
       my={10}>
-      <Paper shadow="sm" radius="lg" p="md" bg={'green.2'} c={'dark.9'} display={'inline-flex'} py={12}>
+      <Paper shadow="sm" radius="lg" p="md" bg={'green.2'} c={'dark.9'} display={'inline-flex'} py={10}>
         <Text>{message}</Text>
       </Paper>
       <Text fz={12} w={50}>
