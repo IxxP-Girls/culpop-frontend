@@ -1,10 +1,9 @@
-import { Flex, Text, Drawer, Divider } from '@mantine/core';
+import { Text, Drawer, Divider } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
+import MyMenu from './MyMenu';
 
 const Menu = ({ opened, close }) => {
   const navigate = useNavigate();
-
-  const handleMypageClick = () => navigate('/mypage');
 
   return (
     <Drawer.Root
@@ -34,13 +33,7 @@ const Menu = ({ opened, close }) => {
             Board
           </Text>
           <Divider my={20} />
-          <Flex gap={10} direction={'column'} py={10}>
-            <Text>윤 슬 회원님, 환영합니다.</Text>
-            <Text onClick={handleMypageClick} style={{ cursor: 'pointer' }}>
-              마이페이지
-            </Text>
-            <Text style={{ cursor: 'pointer' }}>로그아웃</Text>
-          </Flex>
+          <MyMenu navigate={navigate} />
         </Drawer.Body>
       </Drawer.Content>
     </Drawer.Root>
