@@ -3,24 +3,37 @@ import { useDisclosure } from '@mantine/hooks';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useForm, isEmail, hasLength } from '@mantine/form';
+import axios from 'axios';
+import { useSetRecoilState } from 'recoil';
+import userState from '../../recoil/atom/userState';
+import showNotification from '../../utils/showNotification';
 
 const SignInOnlyCulPop = () => {
+  const setUser = useSetRecoilState(userState);
+
   const navigate = useNavigate();
   const icon = <MdOutlineAlternateEmail style={{ width: rem(16), height: rem(16) }} />;
   const [visible, { toggle }] = useDisclosure(false);
 
   const form = useForm({
     validateInputOnChange: true,
-    initialValues: { email: '', password: '' },
+    initialValues: { email: '', pwd: '' },
     validate: {
       email: isEmail('이메일 형식이 유효하지 않습니다'),
-      password: hasLength({ min: 6, max: 12 }, '6자 이상, 12자 이하로 입력해주세요'),
+      pwd: hasLength({ min: 6, max: 12 }, '6자 이상, 12자 이하로 입력해주세요'),
     },
   });
 
-  const handleSubmit = data => {
-    console.log(data);
-    navigate('/');
+  const handleSubmit = async data => {
+    try {
+      const user = await axios.get('/users/login', data);
+
+      setUser(user);
+      navigate('/');
+    } catch (error) {
+      const message = error.response && error.response.statusCode === 401 ? error.response.statusMessage : undefined;
+      showNotification(false, '로그인', message);
+    }
   };
 
   return (
@@ -50,7 +63,7 @@ const SignInOnlyCulPop = () => {
             placeholder="Your password"
             visible={visible}
             onVisibilityChange={toggle}
-            {...form.getInputProps('password')}
+            {...form.getInputProps('pwd')}
           />
         </Flex>
         <Button type="submit" w={'100%'} size="md" my={20}>
