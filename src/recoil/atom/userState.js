@@ -6,7 +6,7 @@ const userState = atom({
   effects_UNSTABLE: [
     ({ onSet }) => {
       onSet(newUser => {
-        localStorage.setItem('userInfo', JSON.stringify(newUser));
+        localStorage.setItem('userState', JSON.stringify(newUser));
       });
     },
   ],
