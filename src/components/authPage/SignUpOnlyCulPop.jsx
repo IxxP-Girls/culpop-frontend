@@ -3,6 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useForm, isEmail, hasLength, matchesField } from '@mantine/form';
+import axios from 'axios';
+import showNotification from '../../utils/showNotification';
 
 const SignUpOnlyCulPop = () => {
   const [visible, { toggle }] = useDisclosure(false);
@@ -11,18 +13,24 @@ const SignUpOnlyCulPop = () => {
 
   const form = useForm({
     validateInputOnChange: true,
-    initialValues: { email: '', password: '', confirmPassword: '' },
+    initialValues: { email: '', pwd: '', confirmPwd: '' },
     validate: {
       email: isEmail('이메일 형식이 유효하지 않습니다'),
-      password: hasLength({ min: 6, max: 12 }, '6자 이상, 12자 이하로 입력해주세요'),
-      confirmPassword: matchesField('password', '입력하신 비밀번호가 일치하지 않습니다'),
+      pwd: hasLength({ min: 6, max: 12 }, '6자 이상, 12자 이하로 입력해주세요'),
+      confirmPwd: matchesField('pwd', '입력하신 비밀번호가 일치하지 않습니다'),
     },
   });
 
-  const handleSubmit = data => {
-    const { email, password } = data;
-    console.log({ email: email, password: password });
-    navigate('/');
+  const handleSubmit = async data => {
+    try {
+      const { email, pwd } = data;
+
+      await axios.post('/users/signup', { email: email, pwd: pwd });
+      navigate('/signin');
+    } catch (error) {
+      const message = error.response && error.response.statusCode === 401 ? error.response.statusMessage : undefined;
+      showNotification(false, '회원가입', message);
+    }
   };
 
   return (
@@ -52,7 +60,7 @@ const SignUpOnlyCulPop = () => {
               placeholder="Your password"
               visible={visible}
               onVisibilityChange={toggle}
-              {...form.getInputProps('password')}
+              {...form.getInputProps('pwd')}
             />
           </Flex>
           <Flex align={'center'}>
@@ -65,7 +73,7 @@ const SignUpOnlyCulPop = () => {
               visible={visible}
               placeholder="Confirm password"
               onVisibilityChange={toggle}
-              {...form.getInputProps('confirmPassword')}
+              {...form.getInputProps('confirmPwd')}
             />
           </Flex>
         </Stack>

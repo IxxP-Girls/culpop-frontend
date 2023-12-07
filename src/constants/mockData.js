@@ -208,3 +208,50 @@ export const postData = [
     timestamp: 1698862838788,
   },
 ];
+
+export const userProfile = {
+  userId: 1,
+  username: 'test',
+  email: 'test@test.com',
+  postList: [
+    {
+      postId: 1,
+      title: '블랙핑크 콘서트 같이 가실 분',
+      cateName: '[동행]',
+      createdAt: 185468269255,
+    },
+    {
+      postId: 2,
+      title: '시눈 팝업 추천 후기',
+      cateName: '[후기]',
+      createdAt: 185468269255,
+    },
+    {
+      postId: 3,
+      title: '스폰지밥 팝업 후기',
+      cateName: '[후기]',
+      createdAt: 185468269255,
+    },
+  ],
+};
+
+export const userInterests = [
+  {
+    popupId: 1,
+    img: 'https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80',
+    title: '티퍼런스 팝업스토어 <잠시, 멈춤 5분>',
+    address: '서울특별시 종로구',
+    startDate: '23.12.03',
+    endDate: '23.12.14',
+    checkLike: false,
+  },
+  {
+    popupId: 2,
+    img: 'https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80',
+    title: '티퍼런스 팝업스토어 <잠시, 멈춤 5분>',
+    address: '서울특별시 종로구',
+    startDate: '23.12.03',
+    endDate: '23.12.14',
+    checkLike: true,
+  },
+];

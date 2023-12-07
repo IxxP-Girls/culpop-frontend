@@ -49,7 +49,7 @@ const routerConfig = createBrowserRouter([
     element: <PopupsPage />,
   },
   {
-    path: '/popup',
+    path: '/popup/:id',
     element: <DetailPage />,
   },
   {
