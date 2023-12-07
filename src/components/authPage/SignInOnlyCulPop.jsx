@@ -26,9 +26,9 @@ const SignInOnlyCulPop = () => {
 
   const handleSubmit = async data => {
     try {
-      const user = await axios.get('/users/login', data);
+      await axios.get('/users/login', data);
 
-      setUser(user);
+      setUser(data.email);
       navigate('/');
     } catch (error) {
       const message = error.response && error.response.statusCode === 401 ? error.response.statusMessage : undefined;
