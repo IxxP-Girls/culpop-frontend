@@ -1,6 +1,7 @@
 import { Tabs, rem } from '@mantine/core';
 import { FaList, FaSpinner, FaRegCalendarAlt } from 'react-icons/fa';
 import Cards from '../common/Cards';
+import { userInterests } from '../../constants/mockData';
 
 const MyInterests = () => {
   const iconStyle = { width: rem(12), height: rem(12) };
@@ -18,7 +19,7 @@ const MyInterests = () => {
           오픈 예정
         </Tabs.Tab>
       </Tabs.List>
-      <Cards />
+      <Cards cards={userInterests} />
     </Tabs>
   );
 };
