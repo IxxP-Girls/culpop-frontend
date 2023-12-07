@@ -2,13 +2,13 @@ import { Container, Flex, Text, Title, Image, Grid, ActionIcon } from '@mantine/
 import { TbHeart, TbHeartFilled, TbMapPin } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
-const Card = ({ title, location, dates, imgUrl }) => {
+const Card = ({ popupId, title, location, startDate, endDate, img }) => {
   const navigate = useNavigate();
 
   return (
-    <Grid h={200} w={470} py={30} pos={'relative'} onClick={() => navigate('/popup')}>
+    <Grid h={200} w={470} py={30} pos={'relative'} onClick={() => navigate(`/popup/${popupId}`)}>
       <Grid.Col span={4}>
-        <Image src={imgUrl} h={140} w={140} radius={10} alt="No way!" />
+        <Image src={img} h={140} w={140} radius={10} alt="No way!" />
       </Grid.Col>
       <Grid.Col span={7}>
         <Flex direction={'column'}>
@@ -20,7 +20,7 @@ const Card = ({ title, location, dates, imgUrl }) => {
             </Text>
           </Container>
           <Text size="md" pos={'absolute'} fz={14} fw={700} bottom={25} right={0}>
-            {dates}
+            {startDate} - {endDate}
           </Text>
         </Flex>
       </Grid.Col>
