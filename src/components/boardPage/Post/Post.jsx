@@ -1,20 +1,43 @@
 import { Divider, Flex, Text, Title, Container, Textarea, Paper, Button } from '@mantine/core';
 import formatDate from '../../../utils/formatDate';
-import { FaRegHeart, FaRegCommentDots } from 'react-icons/fa6';
+import { FaRegHeart, FaRegCommentDots, FaHeart } from 'react-icons/fa6';
 import { FaUserCircle } from 'react-icons/fa';
 import { useState } from 'react';
 import { IoMdUnlock, IoMdLock } from 'react-icons/io';
 import { TbEyeFilled } from 'react-icons/tb';
 import Comments from './Comments';
+import usePostQuery from '../../../hooks/queries/usePostQuery';
+import { useParams } from 'react-router-dom';
+import { postInfo } from '../../../constants/mockData';
 
-const Board = ({ timestamp = 1556406509760 }) => {
+const Post = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const id = useParams();
+  // const { postInfo } = usePostQuery();
+
+  const {
+    postId,
+    username,
+    title,
+    content,
+    createdAt,
+    modifiedAt,
+    likeCount,
+    viewCount,
+    cateName,
+    likeCheck,
+    commentId,
+    commentCount,
+  } = postInfo;
+
+  console.log('here', createdAt);
 
   return (
     <Flex direction={'column'} w={'100%'} gap={10} py={20}>
       <Flex align={'flex-start'} justify={'space-between'} direction={'column'} gap={10}>
-        <Text>{'[동행 구해요]'}</Text>
-        <Title order={3}>{'블랙핑크 팝업행사 같이 가실 분 구해요.'}</Title>
+        <Text>{cateName}</Text>
+        <Title order={3}>{title}</Title>
         <Flex justify={'space-between'} w={'100%'} pr={10}>
           <Flex align={'center'} gap={7}>
             <FaUserCircle size={24} />
@@ -22,7 +45,7 @@ const Board = ({ timestamp = 1556406509760 }) => {
               test
             </Text>
             <Text fz={18} fw={300} c={'dark.2'}>
-              {formatDate(timestamp)}
+              {formatDate(createdAt)}
             </Text>
           </Flex>
           <Flex align={'center'} gap={5} c={'dark.2'}>
@@ -32,7 +55,9 @@ const Board = ({ timestamp = 1556406509760 }) => {
         </Flex>
       </Flex>
       <Divider mb={10} />
-      <Text mih={'300px'} bg={'dark.6'} w={'100%'} my={10} p={20}>{`11월 24일 11시 타임 가실 분, 채팅 주세요.`}</Text>
+      <Text mih={'300px'} bg={'dark.6'} w={'100%'} my={10} p={20}>
+        {content}
+      </Text>
       <Flex gap={10}>
         <Flex
           align={'center'}
@@ -42,9 +67,9 @@ const Board = ({ timestamp = 1556406509760 }) => {
           px={10}
           py={5}
           justify={'space-between'}>
-          <FaRegHeart />
+          {likeCheck ? <FaHeart /> : <FaRegHeart />}
           <Text>{'공감해요'}</Text>
-          <Text>{'7'}</Text>
+          <Text>{likeCount}</Text>
         </Flex>
         <Flex
           align={'center'}
@@ -57,7 +82,7 @@ const Board = ({ timestamp = 1556406509760 }) => {
           onClick={() => setIsOpen(!isOpen)}>
           <FaRegCommentDots />
           <Text>{'댓글'}</Text>
-          <Text>{'7'}</Text>
+          <Text>{commentCount}</Text>
         </Flex>
       </Flex>
       {isOpen && (
@@ -83,4 +108,4 @@ const Board = ({ timestamp = 1556406509760 }) => {
   );
 };
 
-export default Board;
+export default Post;

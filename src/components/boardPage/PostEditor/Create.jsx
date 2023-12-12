@@ -2,7 +2,7 @@ import { Divider, Flex, Title } from '@mantine/core';
 import { noCommonHeight } from '../../../constants/heights';
 import BoardForm from './BoardForm';
 
-const Post = () => {
+const Create = () => {
   return (
     <Flex direction={'column'} w={'100%'} style={{ height: noCommonHeight }} pb={10}>
       <Title order={3}>게시글 등록</Title>
@@ -12,4 +12,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Create;
