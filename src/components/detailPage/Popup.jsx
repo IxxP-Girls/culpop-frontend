@@ -1,6 +1,5 @@
 import { Container, Flex, Text, ActionIcon, Divider, Anchor } from '@mantine/core';
-import { carouselData, tags } from '../../constants/mockData';
-import BaseCarousel from '../common/BaseCarousel';
+import { mainCarousel, tags } from '../../constants/mockData';
 import {
   TbHeart,
   TbHeartFilled,
@@ -9,47 +8,79 @@ import {
   TbWifi,
   TbWifiOff,
   TbPaw,
-  TbCupOff,
   TbCurrencyDollar,
   TbParkingOff,
   TbParking,
   TbCurrencyDollarOff,
   TbMoodKid,
   TbMoodOff,
+  TbEyeFilled,
 } from 'react-icons/tb';
-
 import CustomButton from '../common/CustomButton';
+import { useParams } from 'react-router-dom';
+import usePopupQuery from '../../hooks/queries/usePopupQuery';
+import Badge from './Badge';
+import { popupInfo } from '../../constants/mockData';
+import ImgCarousel from './ImgCarousel';
 
 const Popup = () => {
+  const id = useParams();
+
+  // const { popupInfo } = usePopupQuery(id);
+  const {
+    store,
+    imageList,
+    title,
+    content,
+    time,
+    address,
+    startDate,
+    endDate,
+    notice,
+    storeUrl,
+    snsUrl,
+    parking,
+    fee,
+    nokids,
+    pet,
+    wifi,
+    likeCount,
+    viewCount,
+    likeCheck,
+  } = popupInfo;
+
   return (
     <Container m={0} pb={30} px={0}>
-      <BaseCarousel data={carouselData} />
+      <ImgCarousel data={imageList} />
       <Flex align={'center'} justify={'space-between'} my={20}>
         <Text fz={20}>정보</Text>
         <Flex w={'auto'} display={'flex'} align={'center'} mx={10} gap={5}>
-          <Text fz={20}>0</Text>
-          <ActionIcon variant="transparent">
-            <TbHeart size={40} />
+          <Text fz={20}>{likeCount}</Text>
+          <ActionIcon variant="transparent" color="dark.0">
+            {likeCheck ? <TbHeartFilled size={40} /> : <TbHeart size={40} />}
           </ActionIcon>
         </Flex>
       </Flex>
-      <Flex align={'center'} c={'dark.2'}>
-        <Text fz={14} style={{ cursor: 'pointer' }}>
-          가치공간
+      <Flex justify={'space-between'} align={'center'} c={'dark.2'}>
+        <Text fz={14} style={{ cursor: 'pointer', alignItems: 'center' }} display={'flex'}>
+          {store}
+          <TbChevronRight />
         </Text>
-        <TbChevronRight />
+        <Text fz={14} style={{ alignItems: 'center' }} display={'flex'}>
+          {viewCount} <TbEyeFilled style={{ marginLeft: 5 }} />
+        </Text>
       </Flex>
       <Flex direction={'column'}>
         <Text fz={24} fw={700}>
-          가치공간 디자이너 브랜드 팝업: THE POP-UP EPISODE
+          {title}
         </Text>
         <Text fs={14} fw={700} mb={8}>
-          23.11.15 - 23.12.15
+          {startDate} - {endDate}
         </Text>
         <Flex align={'center'}>
           <TbMapPin />
           <Text size="md" fz={14}>
-            서울특별시 성동구 서울숲4길 28-3
+            {address}
           </Text>
         </Flex>
         <Container py={10} p={0}>
@@ -59,45 +90,23 @@ const Popup = () => {
         </Container>
         <Divider />
         <Flex py={20}>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbCurrencyDollar size={32} />
-            입장료 유료
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbCurrencyDollarOff size={36} />
-            입장료 무료
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbWifi size={36} />
-            와이파이 가능
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbWifiOff size={36} />
-            와이파이 불가
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbPaw size={36} />
-            반려동물
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbParking size={36} />
-            주차가능
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbParkingOff size={36} />
-            주차불가
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbMoodKid size={36} />
-            웰컴 키즈존
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbMoodOff size={36} />노 키즈존
-          </Flex>
-          <Flex direction={'column'} justify={'center'} align={'center'} fz={12} fw={400} m={15}>
-            <TbCupOff size={36} />
-            음료 반입 불가
-          </Flex>
+          <Badge
+            icon={parking ? <TbParking size={36} /> : <TbParkingOff size={36} />}
+            name={parking ? '주차가능' : '주차불가'}
+          />
+          <Badge
+            icon={fee ? <TbCurrencyDollar size={32} /> : <TbCurrencyDollarOff size={36} />}
+            name={fee ? '입장료 유료' : '입장료 무료'}
+          />
+          <Badge
+            icon={wifi ? <TbWifi size={36} /> : <TbWifiOff size={32} />}
+            name={wifi ? '와이파이 가능' : '와이파이 불가'}
+          />
+          {pet && <Badge icon={<TbPaw size={36} />} name={'반려동물'} />}
+          <Badge
+            icon={nokids ? <TbMoodOff size={36} /> : <TbMoodKid size={36} />}
+            name={nokids ? '노 키즈존' : '웰컴 키즈존'}
+          />
         </Flex>
         <Divider />
         <Flex py={20} direction={'column'}>
@@ -119,7 +128,7 @@ const Popup = () => {
             팝업스토어 소개
           </Text>
           <Text fz={14} py={30} px={15} bg={'dark.6'} style={{ whiteSpace: 'pre-line' }}>
-            {` 제이닷의 첫 번째 크리스마스 팝업, 페어리 힐이 오늘부터 오픈합니다!👏 \n드넓은 언덕에 트리의 요정들이 꾸며둔 숲 속을 마음껏 구경해주세요💚🎁 \n 방문 시 미션지를 드립니다. \n미션을 모두 수행하시면 특별한 선물을 드리니 팝업을 즐기시면서 미션도 완수해보세요!\n● YES! KIDSZONE👶아이 동반 가능 (단, 언덕길과 돌뿌리 등은 유의해주세요.)`}
+            {content}
           </Text>
         </Flex>
         <Flex py={20} direction={'column'}>
@@ -127,11 +136,11 @@ const Popup = () => {
             안내 및 주의사항
           </Text>
           <Text fz={14} style={{ whiteSpace: 'pre-line' }}>
-            {` * 우천시 미운영 됩니다.\n * 주차 공간이 없습니다. 가급적 대중교통을 이용해주세요.\n* 월요일은 휴무입니다.`}
+            {notice}
           </Text>
         </Flex>
         <Anchor
-          href={'https://blossom2305.tistory.com/'}
+          href={storeUrl}
           underline="never"
           target="_blank"
           display={'flex'}
@@ -143,7 +152,7 @@ const Popup = () => {
           <TbChevronRight />
         </Anchor>
         <Anchor
-          href={'https://blossom2305.tistory.com/'}
+          href={snsUrl}
           underline="never"
           target="_blank"
           display={'flex'}

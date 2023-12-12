@@ -5,11 +5,15 @@ import CustomButton from '../common/CustomButton';
 import { DatePickerInput } from '@mantine/dates';
 import { dates } from '../../constants/dates';
 import { regions } from '../../constants/regions';
+import useSearchPopupsQuery from '../../hooks/queries/useSearchPopupsQuery';
+import { searchPopups } from '../../constants/mockData';
 
 const Popups = () => {
   const [clickDate, setClickDate] = useState('오늘');
   const [clickRegion, setClickRegion] = useState('전체');
   const [value, setValue] = useState([null, null]);
+
+  // const { searchPopups } = useSearchPopupsQuery();
 
   const CustomButtonGroup = (data, clicked, setClicked) =>
     data.map(item => <CustomButton key={item} data={item} clicked={clicked} setClicked={setClicked} />);
@@ -57,7 +61,7 @@ const Popups = () => {
           <Divider my={10} />
         </Container>
       </Flex>
-      <Cards />
+      <Cards cards={searchPopups} />
     </Flex>
   );
 };

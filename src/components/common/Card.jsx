@@ -2,7 +2,7 @@ import { Container, Flex, Text, Title, Image, Grid, ActionIcon } from '@mantine/
 import { TbHeart, TbHeartFilled, TbMapPin } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
-const Card = ({ popupId, title, location, startDate, endDate, img }) => {
+const Card = ({ popupId, title, location, startDate, endDate, img, likeCheck }) => {
   const navigate = useNavigate();
 
   return (
@@ -26,7 +26,7 @@ const Card = ({ popupId, title, location, startDate, endDate, img }) => {
       </Grid.Col>
       <Grid.Col span={1}>
         <ActionIcon variant="transparent" c={'dark.0'}>
-          <TbHeart size={25} />
+          {likeCheck ? <TbHeartFilled size={25} /> : <TbHeart size={25} />}
         </ActionIcon>
       </Grid.Col>
     </Grid>

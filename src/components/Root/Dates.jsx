@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Container, ActionIcon, Flex, Text, Divider, Button } from '@mantine/core';
 import Cards from '../common/Cards';
 import { useNavigate } from 'react-router-dom';
+import { mainPopups } from '../../constants/mockData';
+import useMainPopupsQuery from '../../hooks/queries/useMainPopupsQuery';
 
 const Dates = () => {
   const navigate = useNavigate();
@@ -11,6 +13,8 @@ const Dates = () => {
   const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
   const [clicked, setClicked] = useState(today);
+
+  // const { mainPopups } = useMainPopupsQuery(clicked);
 
   const handleClick = date => setClicked(date);
 
@@ -63,7 +67,7 @@ const Dates = () => {
           onClick={() => navigate('/popups')}>
           전체보기
         </Flex>
-        <Cards />
+        <Cards cards={mainPopups} />
         <Button fullWidth h={45} my={20} variant="outline" color="dark.0" onClick={() => navigate('/popups')}>
           더보기
         </Button>
