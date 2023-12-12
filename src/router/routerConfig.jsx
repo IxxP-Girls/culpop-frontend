@@ -8,7 +8,7 @@ import SignUpPage from '../pages/SignUpPage';
 import ChatPage from '../pages/ChatPage';
 import BoardsPage from '../pages/BoardsPage';
 import PostPage from '../pages/PostPage';
-import BoardPage from '../pages/BoardPage';
+import CreatePostPage from '../pages/CreatePostPage';
 import EditPage from '../pages/EditPage';
 
 const routerConfig = createBrowserRouter([
@@ -29,12 +29,12 @@ const routerConfig = createBrowserRouter([
     element: <BoardsPage />,
   },
   {
-    path: '/board',
-    element: <BoardPage />,
-  },
-  {
     path: '/post',
     element: <PostPage />,
+  },
+  {
+    path: '/createpost',
+    element: <CreatePostPage />,
   },
   {
     path: '/edit',
