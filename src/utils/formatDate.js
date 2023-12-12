@@ -4,7 +4,7 @@ const formatDate = timestamp => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
 
-  return `${year}년 ${month}월 ${day}일`;
+  return `${year}.${month}.${day}`;
 };
 
 export default formatDate;
