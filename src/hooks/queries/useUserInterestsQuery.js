@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import userState from '../../recoil/atom/userState';
 
 const fetchData = async sortOption => {
-  const res = await axios.get(`/users/profile/popupLike/${sortOption}`, { withCredentials: true });
+  const res = await axios.get(`/users/profile/popupLike?sort=${sortOption}`, { withCredentials: true });
   return res.data;
 };
 
