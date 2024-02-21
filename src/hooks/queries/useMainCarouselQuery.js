@@ -1,18 +1,14 @@
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
-
-const fetchData = async () => {
-  const res = await axios.get('/popup/carousel');
-  return res.data;
-};
+import { fetchMainCarousel } from '../../api/popup';
 
 const useMainCarouselQuery = () => {
   const query = useQuery({
     queryKey: ['@MainCarousel'],
-    queryFn: fetchData(),
+    queryFn: () => fetchMainCarousel(),
+    staleTime: 1000,
   });
 
-  return { ...query, mainCarousel: query.data };
+  return { ...query, main: query.data };
 };
 
 export default useMainCarouselQuery;

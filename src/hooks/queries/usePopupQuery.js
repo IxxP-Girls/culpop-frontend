@@ -1,17 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-
-const fetchData = async id => {
-  const res = await axios.get(`/popup/${id}`);
-  return res.data;
-};
+import { fetchPopup } from '../../api/popup';
 
 const staleTime = 1000 * 3;
 
 const usePopupQuery = id => {
   const query = useQuery({
     queryKey: ['@Popup', id],
-    queryFn: () => fetchData(id),
+    queryFn: () => fetchPopup(id),
     staleTime,
   });
   return { ...query, popupInfo: query.data };

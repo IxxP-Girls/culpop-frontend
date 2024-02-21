@@ -1,12 +1,7 @@
-import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { useQuery } from '@tanstack/react-query';
 import userState from '../../recoil/atom/userState';
-
-const fetchData = async sortOption => {
-  const res = await axios.get(`/users/profile/popupLike?sort=${sortOption}`, { withCredentials: true });
-  return res.data;
-};
+import { fetchInterests } from '../../api/user';
 
 const staleTime = 1000 * 3;
 
@@ -15,7 +10,7 @@ const useUserInterestsQuery = sortOption => {
 
   const query = useQuery({
     queryKey: ['@UserInterests', email, sortOption],
-    queryFn: () => fetchData(sortOption),
+    queryFn: () => fetchInterests(sortOption),
     staleTime,
   });
 

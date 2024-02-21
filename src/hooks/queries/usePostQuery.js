@@ -1,17 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-
-const fetchData = async id => {
-  const res = await axios.get(`/posts/${id}`);
-  return res.data;
-};
+import { fetchPost } from '../../api/post';
 
 const staleTime = 1000 * 3;
 
 const usePostQuery = id => {
   const query = useQuery({
     queryKey: ['@Post', id],
-    queryFn: () => fetchData(id),
+    queryFn: () => fetchPost(id),
     staleTime,
   });
 
