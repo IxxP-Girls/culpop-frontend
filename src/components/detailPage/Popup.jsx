@@ -1,5 +1,5 @@
 import { Container, Flex, Text, ActionIcon, Divider, Anchor } from '@mantine/core';
-import { mainCarousel, tags } from '../../constants/mockData';
+import { tags } from '../../constants/mockData';
 import {
   TbHeart,
   TbHeartFilled,
@@ -20,13 +20,12 @@ import CustomButton from '../common/CustomButton';
 import { useParams } from 'react-router-dom';
 import usePopupQuery from '../../hooks/queries/usePopupQuery';
 import Badge from './Badge';
-import { popupInfo } from '../../constants/mockData';
 import ImgCarousel from './ImgCarousel';
 
 const Popup = () => {
-  const id = useParams();
+  const { id } = useParams();
+  const { popupInfo } = usePopupQuery(id);
 
-  // const { popupInfo } = usePopupQuery(id);
   const {
     store,
     imageList,
