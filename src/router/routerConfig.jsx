@@ -10,11 +10,16 @@ import BoardsPage from '../pages/BoardsPage';
 import PostPage from '../pages/PostPage';
 import CreatePostPage from '../pages/CreatePostPage';
 import EditPage from '../pages/EditPage';
+import { Suspense } from 'react';
 
 const routerConfig = createBrowserRouter([
   {
     path: '/',
-    element: <RootPage />,
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <RootPage />
+      </Suspense>
+    ),
   },
   {
     path: '/signin',
@@ -50,7 +55,11 @@ const routerConfig = createBrowserRouter([
   },
   {
     path: '/popup/:id',
-    element: <DetailPage />,
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <DetailPage />
+      </Suspense>
+    ),
   },
   {
     path: '/chat',
