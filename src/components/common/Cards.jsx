@@ -1,10 +1,13 @@
 import Card from './Card';
 import { Grid } from '@mantine/core';
+import useMainPopupsQuery from '../../hooks/queries/useMainPopupsQuery';
 
-const Cards = ({ cards }) => {
+const Cards = ({ date }) => {
+  const { mainPopups } = useMainPopupsQuery(date);
+
   return (
     <Grid>
-      {cards.map(({ popupId, title, location, startDate, endDate, img, likeCheck }) => (
+      {mainPopups.map(({ popupId, title, location, startDate, endDate, image, likeCheck }) => (
         <Grid.Col span={6} key={popupId}>
           <Card
             popupId={popupId}
@@ -12,7 +15,7 @@ const Cards = ({ cards }) => {
             location={location}
             startDate={startDate}
             endDate={endDate}
-            img={img}
+            image={image}
             likeCheck={likeCheck}
           />
         </Grid.Col>
