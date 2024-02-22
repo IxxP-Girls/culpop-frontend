@@ -1,12 +1,14 @@
 import { Container } from '@mantine/core';
 import BaseCarousel from '../common/BaseCarousel';
 import Dates from './Dates';
-import { carouselData } from '../../constants/mockData';
+import useMainCarouselQuery from '../../hooks/queries/useMainCarouselQuery';
 
 const Root = () => {
+  const { main } = useMainCarouselQuery();
+
   return (
     <Container p={0}>
-      <BaseCarousel data={carouselData} />
+      <BaseCarousel data={main} />
       <Dates />
     </Container>
   );

@@ -1,7 +1,7 @@
 import { Paper, Text, Container } from '@mantine/core';
 import { RiMapPin2Fill } from 'react-icons/ri';
 
-const Slide = ({ image, title, date, location }) => {
+const Slide = ({ image, title, address, startDate, endDate }) => {
   return (
     <Paper
       p="xl"
@@ -21,10 +21,12 @@ const Slide = ({ image, title, date, location }) => {
         <Text fw={900} fz={24} mt={'xs'} lineClamp={1}>
           {title}
         </Text>
-        <Text size="md">{date}</Text>
+        <Text size="md">
+          {startDate} - {endDate}
+        </Text>
         <Container display={'flex'} m={0} p={0} style={{ alignItems: 'center', gap: 5 }}>
           <RiMapPin2Fill />
-          <Text size="md">{location}</Text>
+          <Text size="md">{address}</Text>
         </Container>
       </Container>
     </Paper>

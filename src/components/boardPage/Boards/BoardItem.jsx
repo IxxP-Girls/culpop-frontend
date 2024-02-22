@@ -14,7 +14,7 @@ const BoardItem = ({ category, title, counts, writer, timestamp }) => {
           justifyContent: 'center',
         },
       }}
-      onClick={() => navigate('/board')}
+      onClick={() => navigate('/post')}
       h={70}
       pos={'relative'}
       display={'flex'}

@@ -1,10 +1,10 @@
-import Post from '../components/boardPage/Post/Post';
 import AppLayout from '../components/common/AppLayout';
+import Create from '../components/boardPage/PostEditor/Create';
 
 const PostPage = () => {
   return (
     <AppLayout>
-      <Post />
+      <Create />
     </AppLayout>
   );
 };
