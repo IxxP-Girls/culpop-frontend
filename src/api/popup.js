@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const { CORS_SERVER_URL = '' } = import.meta.env;
+const CORS_SERVER_URL = 'https://www.culpop.shop';
 
 const fetchMainCarousel = async () => {
   const res = await axios.get(`${CORS_SERVER_URL}/popup/carousel`);
