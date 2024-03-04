@@ -1,4 +1,4 @@
-import Root from '../components/root/Root';
+import Root from '../components/rootPage/Root';
 import AppLayout from '../components/common/AppLayout';
 import ArrowUpBtn from '../components/common/ArrowUpBtn';
 
