@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
+import { searchPopups } from '../../api/popup';
 
 const staleTime = 1000 * 3;
 
-const useSearchPopupsQuery = (area, startDate, endDate) => {
+const useSearchPopupsQuery = (word, page) => {
   const query = useQuery({
-    queryKey: ['@SearchPopups', area, startDate, endDate],
-    queryFn: () => searchPopups(area, startDate, endDate),
+    queryKey: ['@ListPopups', word, page],
+    queryFn: () => searchPopups(word, page),
     staleTime,
   });
 
