@@ -1,14 +1,14 @@
 import { Container, Divider, Flex, Title } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import CustomButton from '../common/CustomButton';
-import { regions } from '../../constants/regions';
+import { REGIONS, DEFAULT_REGION } from '../../constants/regions';
 import Cards from './Cards';
 import SearchCards from './SearchCards';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import getFormattedDate from '../../utils/getFormattedDate';
 import handleDateChange from '../../utils/handleDateChange';
-import { DATE_OPTIONS, DEFAULT_REGION } from '../../constants/constants';
+import { DATE_OPTIONS } from '../../constants/dates';
 import DatePickerInputGroup from './DatePickerInputGroup';
 
 const CustomButtonGroup = ({ data, clicked, setClicked }) => (
