@@ -1,10 +1,19 @@
 import { Flex, Drawer, Divider, TextInput, ActionIcon, Container, Button } from '@mantine/core';
 import { GrPrevious } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const tags = ['현대', '신세계백화점', '성수', '옷', '이벤트', '키즈', '굿즈', '전시', '데이트', '포토존'];
 
 const SearchBar = ({ opened, close }) => {
   const navigate = useNavigate();
+  const [value, setValue] = useState('');
+
+  const handleKeyDown = e => {
+    if (e.key !== 'Enter') return;
+
+    navigate(`/popups/search?word=${value}`);
+  };
+
   return (
     <Drawer.Root
       opened={opened}
@@ -24,7 +33,15 @@ const SearchBar = ({ opened, close }) => {
             <ActionIcon variant="transparent" onClick={close} mr={20}>
               <GrPrevious size={20} />
             </ActionIcon>
-            <TextInput w={'100%'} radius={20} size="md" placeholder={'지역, 팝업스토어명, 테마 키워드 검색'} />
+            <TextInput
+              w={'100%'}
+              radius={20}
+              size="md"
+              placeholder={'지역, 팝업스토어명, 테마 키워드 검색'}
+              value={value}
+              onChange={e => setValue(e.currentTarget.value)}
+              onKeyDown={handleKeyDown}
+            />
           </Flex>
           <Divider my={20} />
           <Container pb={20}>
@@ -41,7 +58,7 @@ const SearchBar = ({ opened, close }) => {
               td="underline"
               fw={200}
               fz={14}
-              onClick={() => navigate('/popups')}>
+              onClick={() => navigate('/popups/list')}>
               상세 검색
             </Button>
           </Flex>
