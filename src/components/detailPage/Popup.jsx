@@ -126,17 +126,20 @@ const Popup = () => {
           <Text fz={16} fw={700} mb={15}>
             팝업스토어 소개
           </Text>
-          <Text fz={14} py={30} px={15} bg={'dark.6'} style={{ whiteSpace: 'pre-line' }}>
-            {content}
-          </Text>
+          <Text
+            fz={14}
+            py={30}
+            px={15}
+            bg={'dark.6'}
+            style={{ whiteSpace: 'pre-line' }}
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </Flex>
         <Flex py={20} direction={'column'}>
           <Text fz={16} fw={700} mb={15}>
             안내 및 주의사항
           </Text>
-          <Text fz={14} style={{ whiteSpace: 'pre-line' }}>
-            {notice}
-          </Text>
+          <Text fz={14} style={{ whiteSpace: 'pre-line' }} dangerouslySetInnerHTML={{ __html: notice }} />
         </Flex>
         <Anchor
           href={storeUrl}
