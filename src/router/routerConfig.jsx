@@ -31,11 +31,19 @@ const routerConfig = createBrowserRouter([
   },
   {
     path: '/boards',
-    element: <BoardsPage />,
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <BoardsPage />
+      </Suspense>
+    ),
   },
   {
     path: '/post',
-    element: <PostPage />,
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <PostPage />
+      </Suspense>
+    ),
   },
   {
     path: '/createpost',
@@ -47,11 +55,19 @@ const routerConfig = createBrowserRouter([
   },
   {
     path: '/mypage',
-    element: <MyPage />,
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <MyPage />
+      </Suspense>
+    ),
   },
   {
-    path: '/popups',
-    element: <PopupsPage />,
+    path: '/popups/:name',
+    element: (
+      <Suspense fallback={<span>isLoading...</span>}>
+        <PopupsPage />
+      </Suspense>
+    ),
   },
   {
     path: '/popup/:id',
