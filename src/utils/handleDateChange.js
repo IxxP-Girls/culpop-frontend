@@ -1,4 +1,4 @@
-import { DATE_OPTIONS } from '../constants/constants';
+import { DATE_OPTIONS } from '../constants/dates';
 import getFormattedDate from './getFormattedDate';
 
 const handleDateChange = (clickDate, setStartDate, setEndDate, setValue) => {

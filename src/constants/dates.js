@@ -1,1 +1,6 @@
-export const dates = ['오늘', '+7일', '+2주', '직접선택'];
+export const DATE_OPTIONS = {
+  TODAY: '오늘',
+  SEVEN_DAYS: '+7일',
+  TWO_WEEKS: '+2주',
+  CUSTOM: '직접선택',
+};
