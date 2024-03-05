@@ -17,11 +17,16 @@ const fetchPopup = async id => {
   return res.data;
 };
 
-const searchPopups = async (area, startDate, endDate) => {
+const listPopups = async (area, startDate, endDate, page) => {
   const res = await axios.get(
-    `$${CORS_SERVER_URL}/popup/popups?area=${area}&startDate=${startDate}&endDate=${endDate}`,
+    `${CORS_SERVER_URL}/popup/list?area=${area}&startDate=${startDate}&endDate=${endDate}&page=${page}`,
   );
   return res.data;
 };
 
-export { fetchMainCarousel, fetchPopups, fetchPopup, searchPopups };
+const searchPopups = async (word, page) => {
+  const res = await axios.get(`${CORS_SERVER_URL}/popup/search?word=${word}&page=${page}`);
+  return res.data;
+};
+
+export { fetchMainCarousel, fetchPopups, fetchPopup, listPopups, searchPopups };
