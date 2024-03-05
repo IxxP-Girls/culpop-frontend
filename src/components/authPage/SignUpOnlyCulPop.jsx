@@ -3,8 +3,8 @@ import { useDisclosure } from '@mantine/hooks';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useForm, isEmail, hasLength, matchesField } from '@mantine/form';
-import axios from 'axios';
 import showNotification from '../../utils/showNotification';
+import { signUp } from '../../api/user';
 
 const SignUpOnlyCulPop = () => {
   const [visible, { toggle }] = useDisclosure(false);
@@ -25,7 +25,7 @@ const SignUpOnlyCulPop = () => {
     try {
       const { email, pwd } = data;
 
-      await axios.post('/users/signup', { email: email, pwd: pwd });
+      signUp({ email: email, pwd: pwd });
       navigate('/signin');
     } catch (error) {
       const message = error.response && error.response.statusCode === 401 ? error.response.statusMessage : undefined;

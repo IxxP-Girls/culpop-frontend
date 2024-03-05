@@ -3,10 +3,10 @@ import { useDisclosure } from '@mantine/hooks';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useForm, isEmail, hasLength } from '@mantine/form';
-import axios from 'axios';
 import { useSetRecoilState } from 'recoil';
 import userState from '../../recoil/atom/userState';
 import showNotification from '../../utils/showNotification';
+import { SignIn } from '../../api/user';
 
 const SignInOnlyCulPop = () => {
   const setUser = useSetRecoilState(userState);
@@ -26,7 +26,8 @@ const SignInOnlyCulPop = () => {
 
   const handleSubmit = async data => {
     try {
-      await axios.get('/users/login', data);
+      console.log(data);
+      SignIn(data);
 
       setUser(data.email);
       navigate('/');

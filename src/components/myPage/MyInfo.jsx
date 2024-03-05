@@ -3,13 +3,12 @@ import { PiPencilLine } from 'react-icons/pi';
 import { useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import useUserProfileQuery from '../../hooks/queries/useUserProfileQuery';
-import { userProfile } from '../../constants/mockData';
 
 const MyInfo = () => {
   const navigate = useNavigate();
   const [openedDeletePost, { open: openDeletePost, close: closeDeletePost }] = useDisclosure(false);
 
-  // const { userProfile } = useUserProfileQuery();
+  const { userProfile } = useUserProfileQuery();
 
   const { username, email, postList } = userProfile;
 
