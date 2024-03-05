@@ -52,7 +52,7 @@ const Popups = () => {
           <Title order={4} w={100}>
             지역
           </Title>
-          <CustomButtonGroup data={regions} clicked={clickRegion} setClicked={setClickRegion} />
+          <CustomButtonGroup data={REGIONS} clicked={clickRegion} setClicked={setClickRegion} />
         </Flex>
         <Divider my={10} />
       </Container>
