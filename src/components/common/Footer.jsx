@@ -18,7 +18,7 @@ const Footer = () => {
         <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/chat')}>
           <TbSend size={30} />
         </ActionIcon>
-        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/popups')}>
+        <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/popups/list')}>
           <TbListSearch size={30} />
         </ActionIcon>
         <ActionIcon variant="transparent" color="dark.0" onClick={() => navigate('/mypage')}>
