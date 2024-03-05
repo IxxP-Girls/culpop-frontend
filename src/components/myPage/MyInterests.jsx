@@ -1,6 +1,6 @@
 import { Tabs, rem } from '@mantine/core';
 import { FaList, FaSpinner, FaRegCalendarAlt } from 'react-icons/fa';
-import Cards from '../common/Cards';
+import Cards from '../rootPage/Cards';
 import { userInterests } from '../../constants/mockData';
 import { useState } from 'react';
 import useUserInterestsQuery from '../../hooks/queries/useUserInterestsQuery';
