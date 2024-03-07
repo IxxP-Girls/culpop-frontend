@@ -8,7 +8,7 @@ const fetchMainCarousel = async () => {
 };
 
 const fetchPopups = async (date: string) => {
-  const res = await axios.get(`${CORS_SERVER_URL}/popup?date=${date}`);
+  const res = await axios.get(`${CORS_SERVER_URL}/popup?date=${date}`, { withCredentials: true });
   return res.data;
 };
 
@@ -20,12 +20,13 @@ const fetchPopup = async (id: number) => {
 const listPopups = async (area: string, startDate: string, endDate: string, page: number) => {
   const res = await axios.get(
     `${CORS_SERVER_URL}/popup/list?area=${area}&startDate=${startDate}&endDate=${endDate}&page=${page}`,
+    { withCredentials: true },
   );
   return res.data;
 };
 
 const searchPopups = async (word: string, page: number) => {
-  const res = await axios.get(`${CORS_SERVER_URL}/popup/search?word=${word}&page=${page}`);
+  const res = await axios.get(`${CORS_SERVER_URL}/popup/search?word=${word}&page=${page}`, { withCredentials: true });
   return res.data;
 };
 
