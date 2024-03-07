@@ -15,8 +15,6 @@ const useAuthenticationQuery = () => {
     retry: false,
   });
 
-  console.log(data);
-
   useEffect(() => {
     if (isSuccess && !data.isLogin) {
       setUserId(null);
