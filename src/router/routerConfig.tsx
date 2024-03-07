@@ -11,6 +11,7 @@ import PostPage from '../pages/PostPage';
 import CreatePostPage from '../pages/CreatePostPage';
 import EditPage from '../pages/EditPage';
 import { Suspense } from 'react';
+import AuthenticationGuard from '../guard/guard';
 
 const routerConfig = createBrowserRouter([
   {
@@ -51,14 +52,19 @@ const routerConfig = createBrowserRouter([
   },
   {
     path: '/edit',
-    element: <EditPage />,
+    element: <AuthenticationGuard redirectTo="/signin" element={<EditPage />} />,
   },
   {
     path: '/mypage',
     element: (
-      <Suspense fallback={<span>isLoading...</span>}>
-        <MyPage />
-      </Suspense>
+      <AuthenticationGuard
+        redirectTo="/signin"
+        element={
+          <Suspense fallback={<span>isLoading...</span>}>
+            <MyPage />
+          </Suspense>
+        }
+      />
     ),
   },
   {
@@ -79,7 +85,7 @@ const routerConfig = createBrowserRouter([
   },
   {
     path: '/chat',
-    element: <ChatPage />,
+    element: <AuthenticationGuard redirectTo="/signin" element={<ChatPage />} />,
   },
 ]);
 
