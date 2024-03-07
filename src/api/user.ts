@@ -16,12 +16,18 @@ const fetchInterests = async (sortOption: string) => {
 };
 
 const fetchProfile = async () => {
-  const { data } = await axios.get(`${BASE_URL}/profile`, { withCredentials: true });
-  return data;
+  const res = await axios.get(`${BASE_URL}/profile`, { withCredentials: true });
+  return res.data;
 };
 
 const signUp = async (data: authData) => await axios.post(`${BASE_URL}/signup`, data);
 
 const SignIn = async (data: authData) => await axios.post(`${BASE_URL}/login`, data);
 
-export { fetchInterests, fetchProfile, signUp, SignIn };
+const checkVerify = async () => {
+  const res = await axios.get(`${BASE_URL}/verify`, { withCredentials: true });
+
+  return res.data;
+};
+
+export { fetchInterests, fetchProfile, signUp, SignIn, checkVerify };
