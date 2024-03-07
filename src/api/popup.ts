@@ -30,4 +30,16 @@ const searchPopups = async (word: string, page: number) => {
   return res.data;
 };
 
-export { fetchMainCarousel, fetchPopups, fetchPopup, listPopups, searchPopups };
+const likePopup = async (popupId: number) =>
+  await axios.post(
+    `${CORS_SERVER_URL}/popup/${popupId}/like`,
+    {},
+    {
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+
+export { fetchMainCarousel, fetchPopups, fetchPopup, listPopups, searchPopups, likePopup };
