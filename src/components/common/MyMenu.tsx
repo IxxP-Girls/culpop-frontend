@@ -1,14 +1,16 @@
 import axios from 'axios';
-import { useSetRecoilState, useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { Flex, Text } from '@mantine/core';
-import userState from '../../recoil/atom/userState';
-import isLoginState from '../../recoil/atom/isLoginState';
+import { userState } from '../../recoil/atom/userState';
 import { useNavigate } from 'react-router-dom';
+import useAuthenticationQuery from '../../hooks/queries/uesAuthenticcationQuery';
+import { isLoginState } from '../../recoil/atom';
 
 const MyMenu = () => {
   const navigate = useNavigate();
+  const { isLogin } = useAuthenticationQuery();
 
-  const [isLogin, setIsLogin] = useRecoilState(isLoginState);
+  const setIsLogin = useSetRecoilState(isLoginState);
   const setUser = useSetRecoilState(userState);
 
   const handleClick = async () => {
