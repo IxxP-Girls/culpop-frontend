@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-const userState = atom({
+export const userState = atom({
   key: 'userState',
   default: JSON.parse(localStorage.getItem('userState') || '{}'),
   effects_UNSTABLE: [
@@ -11,5 +11,3 @@ const userState = atom({
     },
   ],
 });
-
-export default userState;

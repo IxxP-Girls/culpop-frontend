@@ -4,7 +4,7 @@ import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import { useForm, isEmail, hasLength } from '@mantine/form';
 import { useSetRecoilState } from 'recoil';
-import userState from '../../recoil/atom/userState';
+import { userState } from '../../recoil/atom/userState';
 import showNotification from '../../utils/showNotification';
 import { SignIn } from '../../api/user';
 import { authData } from '../../types/types';

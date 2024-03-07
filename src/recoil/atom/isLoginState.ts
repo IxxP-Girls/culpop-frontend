@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-const isLoginState = atom({
+export const isLoginState = atom({
   key: 'isLoginState',
   default: JSON.parse(localStorage.getItem('isLoginState') || 'false'),
   effects_UNSTABLE: [
@@ -11,5 +11,3 @@ const isLoginState = atom({
     },
   ],
 });
-
-export default isLoginState;

@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { useSuspenseQuery } from '@tanstack/react-query';
-import userState from '../../recoil/atom/userState';
+import { userState } from '../../recoil/atom/userState';
 import { fetchInterests } from '../../api/user';
 
 const staleTime = 1000 * 3;
