@@ -22,7 +22,7 @@ const fetchProfile = async () => {
 
 const signUp = async (data: authData) => await axios.post(`${BASE_URL}/signup`, data);
 
-const SignIn = async (data: authData) => await axios.post(`${BASE_URL}/login`, data);
+const SignIn = async (data: authData) => await axios.post(`${BASE_URL}/login`, data, { withCredentials: true });
 
 const checkVerify = async () => {
   const res = await axios.get(`${BASE_URL}/verify`, { withCredentials: true });
