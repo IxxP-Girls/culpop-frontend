@@ -50,7 +50,7 @@ const Popups = () => {
         <Divider my={10} />
       </Container>
       {name === 'list' ? (
-        <Cards date={{ area: clickRegion, startDate: startDate, endDate: endDate, page: 1 }} />
+        <Cards date={{ area: clickRegion, startDate: startDate, endDate: endDate }} />
       ) : (
         <SearchCards date={{ word: word || '', page: 1 }} />
       )}
