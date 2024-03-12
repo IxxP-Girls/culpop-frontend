@@ -1,42 +1,17 @@
 import useGenericMutation from './useGenericMutation';
+import { likePopup } from '../../api/popup';
 import { userState } from '../../recoil/atom';
 import { useRecoilValue } from 'recoil';
-import { likePopup } from '../../api/popup';
-
-interface Popup {
-  popupId: number;
-  store: string;
-  imageList: string[];
-  title: string;
-  content: string;
-  time: object[];
-  address: string;
-  startDate: string;
-  endDate: string;
-  latitude: string;
-  longitude: string;
-  notice: string;
-  storeUrl: string;
-  snsUrl: string;
-  parking: boolean;
-  fee: boolean;
-  noKids: boolean;
-  pet: boolean;
-  wifi: boolean;
-  likeCount: number;
-  viewCount: number;
-  likeCheck: boolean;
-  tagList: string[];
-}
+import { Popup } from '../../types/types';
 
 const useAddLikePopupMutation = (id: number) => {
-  const userId = useRecoilValue(userState) || '';
+  const email = useRecoilValue(userState);
 
   return useGenericMutation({
-    queryKey: ['@Popup', id, userId],
+    queryKey: ['@Popup', id + '', email],
     mutationFn: () => likePopup(id),
     onMutate() {
-      return (popupInfo: Popup) => [{ ...popupInfo, likeCheck: !popupInfo.likeCheck }][0];
+      return (popupInfo: Popup) => ({ ...popupInfo, likeCheck: true });
     },
   });
 };
