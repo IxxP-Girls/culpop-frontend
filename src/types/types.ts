@@ -37,4 +37,43 @@ interface ModalProps {
   close: () => void;
 }
 
-export type { authData, CustomBtnProps, CardProps, CommentProps, ModalProps };
+interface Post {
+  postId: number;
+  cateName: string;
+  title: string;
+  createdAt: string;
+  viewCount: number;
+}
+
+interface PostType {
+  data: Post[];
+  total: number;
+}
+
+interface Popup {
+  popupId: number;
+  store: string;
+  imageList: string[];
+  title: string;
+  content: string;
+  time: object[];
+  address: string;
+  startDate: string;
+  endDate: string;
+  latitude: string;
+  longitude: string;
+  notice: string;
+  storeUrl: string;
+  snsUrl: string;
+  parking: boolean;
+  fee: boolean;
+  noKids: boolean;
+  pet: boolean;
+  wifi: boolean;
+  likeCount: number;
+  viewCount: number;
+  likeCheck: boolean;
+  tagList: string[];
+}
+
+export type { authData, CustomBtnProps, CardProps, CommentProps, ModalProps, PostType, Popup };
