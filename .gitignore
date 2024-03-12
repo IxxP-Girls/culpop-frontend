@@ -123,3 +123,6 @@ dist
 # Custom
 .env
 package-lock.json
+
+
+*.pem
