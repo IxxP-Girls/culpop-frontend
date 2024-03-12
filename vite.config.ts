@@ -1,16 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import mkcert from 'vite-plugin-mkcert';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      '/popup': {
-        // target: `http://43.202.13.38:8081`,
-        target: `https://www.culpop.shop`,
-        changeOrigin: true,
-      },
-    },
-  },
+  plugins: [react(), mkcert()],
+  server: {},
 });
