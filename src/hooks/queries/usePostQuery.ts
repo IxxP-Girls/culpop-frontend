@@ -10,7 +10,7 @@ const usePostQuery = (id: number) => {
     staleTime,
   });
 
-  return { ...query, postInfo: query.data };
+  return { postInfo: query.data };
 };
 
 export default usePostQuery;
