@@ -18,15 +18,7 @@ const AuthenticationGuard: React.FC<AuthenticationGuardProps> = ({ redirectTo, e
       try {
         const data = await checkVerify();
 
-        if (data && !data.userId) {
-          setUserId(null);
-          setIsLogin(data.isLogin);
-        }
-
-        if (data && data.userId) {
-          setUserId(data.userId);
-          setIsLogin(data.isLogin);
-        }
+        setIsLogin(data);
       } catch (error) {
         console.error('Error occurred while verifying authentication:', error);
       }

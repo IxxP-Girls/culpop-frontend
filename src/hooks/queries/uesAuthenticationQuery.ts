@@ -16,12 +16,7 @@ const useAuthenticationQuery = () => {
   });
 
   useEffect(() => {
-    if (isSuccess && !data.isLogin) {
-      setUserId(null);
-      setIsLogin(data.isLogin);
-    }
-
-    if (isSuccess && data.isLogin) {
+    if (isSuccess) {
       setIsLogin(data.isLogin);
     }
   }, [data, isSuccess, setIsLogin, setUserId]);
