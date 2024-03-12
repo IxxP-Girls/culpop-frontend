@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useSetRecoilState } from 'recoil';
+import { useSetRecoilState, useRecoilState } from 'recoil';
 import { Flex, Text } from '@mantine/core';
 import { userState } from '../../recoil/atom/userState';
 import { useNavigate } from 'react-router-dom';
-import useAuthenticationQuery from '../../hooks/queries/uesAuthenticcationQuery';
+import useAuthenticationQuery from '../../hooks/queries/uesAuthenticationQuery';
 import { isLoginState } from '../../recoil/atom';
 
 const MyMenu = () => {
@@ -11,7 +11,7 @@ const MyMenu = () => {
   const { isLogin } = useAuthenticationQuery();
 
   const setIsLogin = useSetRecoilState(isLoginState);
-  const setUser = useSetRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   const handleClick = async () => {
     await axios.get('/users/logout', { withCredentials: true });
@@ -25,7 +25,7 @@ const MyMenu = () => {
     <Flex gap={10} direction={'column'} py={10}>
       {isLogin ? (
         <>
-          <Text>윤 슬 회원님, 환영합니다.</Text>
+          <Text>{user.match(/^(.*?)@/)[1]} 회원님, 환영합니다.</Text>
           <Text onClick={() => navigate('/mypage')} style={{ cursor: 'pointer' }}>
             마이페이지
           </Text>
