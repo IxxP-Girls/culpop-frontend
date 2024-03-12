@@ -1,14 +1,17 @@
-import { Container, Divider, Flex, Text, Paper, Button, Group, Pagination, Modal } from '@mantine/core';
-import { PiPencilLine } from 'react-icons/pi';
-import { useNavigate } from 'react-router-dom';
+import { Container, Divider, Flex, Text, Button, Modal } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import useUserProfileQuery from '../../hooks/queries/useUserProfileQuery';
+import BoardList from './BoardList';
+import { useState, useEffect } from 'react';
 
 const MyInfo = () => {
-  const navigate = useNavigate();
   const [openedDeletePost, { open: openDeletePost, close: closeDeletePost }] = useDisclosure(false);
+  const [pagenum, setPagenum] = useState<number>(1);
+  const { userProfile, refetch } = useUserProfileQuery(pagenum);
 
-  const { userProfile } = useUserProfileQuery();
+  useEffect(() => {
+    refetch();
+  }, [pagenum]);
 
   const { username, email, postList } = userProfile;
 
@@ -63,49 +66,7 @@ const MyInfo = () => {
           <Divider />
         </Container>
       </Flex>
-      <Container w={'100%'} mb={15}>
-        <Flex my={10} align={'center'}>
-          <PiPencilLine />
-          <Text>내가 작성한 글</Text>
-        </Flex>
-        <Container w={'100%'} h={'300px'} bg={'dark.6'} pos={'relative'} style={{ borderRadius: '10px' }} p={20}>
-          {postList.map(({ postId, title, cateName, createdAt }) => (
-            <Paper
-              key={postId}
-              m="md"
-              bg={'transparent'}
-              pos={'relative'}
-              h={'15%'}
-              style={{
-                alignItems: 'center',
-              }}>
-              <Flex>
-                <Text variant="h5" mr={5}>
-                  {cateName}
-                </Text>
-                <Text>{title}</Text>
-                <Group pos={'absolute'} right={0} gap={5}>
-                  <Button size="xs" color="dark.4" onClick={() => navigate('/edit')}>
-                    수정
-                  </Button>
-                  <Button size="xs" onClick={openDeletePost}>
-                    삭제
-                  </Button>
-                </Group>
-              </Flex>
-              <Divider my={10} color="dark.5" />
-            </Paper>
-          ))}
-          <Pagination
-            display={'flex'}
-            style={{ justifyContent: 'center' }}
-            total={5}
-            pos={'absolute'}
-            bottom={10}
-            w={'100%'}
-          />
-        </Container>
-      </Container>
+      <BoardList postList={postList} openDeletePost={openDeletePost} setPagenum={setPagenum} />
     </>
   );
 };
