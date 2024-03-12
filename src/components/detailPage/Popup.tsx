@@ -20,12 +20,15 @@ import { useParams } from 'react-router-dom';
 import usePopupQuery from '../../hooks/queries/usePopupQuery';
 import Badge from './Badge';
 import ImgCarousel from './ImgCarousel';
+import useAddLikePopupMutation from '../../hooks/mutations/useAddLikePopupMutation';
+import useDeleteLikePopupMutation from '../../hooks/mutations/useDeleteLikePopupMutation';
 
 const Popup = () => {
   const { id } = useParams();
-  const { popupInfo } = usePopupQuery(id);
+  const { popupInfo } = usePopupQuery(Number(id));
 
   const {
+    popupId,
     store,
     imageList,
     title,
@@ -47,6 +50,14 @@ const Popup = () => {
     likeCheck,
   } = popupInfo;
 
+  const { mutate: addHeart } = useAddLikePopupMutation(popupId);
+  const { mutate: deleteHeart } = useDeleteLikePopupMutation(popupId);
+
+  const handleClick = () => {
+    if (!likeCheck) addHeart(popupId);
+    else deleteHeart(popupId);
+  };
+
   return (
     <Container m={0} pb={30} px={0}>
       <ImgCarousel data={imageList} />
@@ -54,7 +65,7 @@ const Popup = () => {
         <Text fz={20}>정보</Text>
         <Flex w={'auto'} display={'flex'} align={'center'} mx={10} gap={5}>
           <Text fz={20}>{likeCount}</Text>
-          <ActionIcon variant="transparent" color="dark.0">
+          <ActionIcon variant="transparent" color="dark.0" onClick={handleClick}>
             {likeCheck ? <TbHeartFilled size={40} /> : <TbHeart size={40} />}
           </ActionIcon>
         </Flex>
