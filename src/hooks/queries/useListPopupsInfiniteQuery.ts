@@ -14,10 +14,11 @@ const useListPopupsInfiniteQuery = ({ area, startDate, endDate }: UseListPopupsQ
     queryFn: ({ pageParam = 1 }) => listPopups(area, startDate, endDate, pageParam),
     initialPageParam: 1,
     getNextPageParam: (lastPage: CardProps[], allPages: CardProps[][]): number | undefined => {
-      const nextPage = allPages.length === 1 ? 1 : allPages.length;
+      const nextPage = lastPage.length < 10 ? undefined : allPages.length + 1;
 
-      return lastPage.length === 0 ? nextPage : undefined;
+      return nextPage;
     },
+    staleTime: 1000 * 10,
   });
 
   return { listPopups: data?.pages.flat(), hasNextPage, fetchNextPage };
