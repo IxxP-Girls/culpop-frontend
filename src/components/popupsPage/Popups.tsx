@@ -52,7 +52,7 @@ const Popups = () => {
       {name === 'list' ? (
         <Cards date={{ area: clickRegion, startDate: startDate, endDate: endDate }} />
       ) : (
-        <SearchCards date={{ word: word || '', page: 1 }} />
+        <SearchCards date={{ word: word || '' }} />
       )}
     </Flex>
   );
