@@ -1,19 +1,43 @@
 import Deck from '../common/Deck';
-import useSearchPopups from '../../hooks/queries/useSearchPopupsQuery';
+import useSearchPopupsInfiniteQuery from '../../hooks/queries/useSearchPopupsInfiniteQuery';
+import useObserver from '../../hooks/useObserver';
+import { useState, useCallback, useEffect } from 'react';
+import { Skeleton } from '@mantine/core';
 
 interface SearchCardsProps {
   date: {
     word: string;
-    page: number;
   };
 }
 
 const SearchCards: React.FC<SearchCardsProps> = ({ date }) => {
-  const { word, page } = date;
+  const { word } = date;
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { searchPopups } = useSearchPopups(word, page);
+  const { searchPopups, hasNextPage, fetchNextPage } = useSearchPopupsInfiniteQuery(word);
 
-  return <Deck data={searchPopups} />;
+  const getNextPage = useCallback(() => {
+    if (isLoading || !hasNextPage) return;
+    setIsLoading(true);
+    fetchNextPage();
+    setIsLoading(false);
+  }, [fetchNextPage, isLoading, hasNextPage]);
+
+  useEffect(() => {
+    getNextPage();
+  }, [getNextPage]);
+
+  const observerRef = useObserver(getNextPage);
+  return (
+    <>
+      <Deck data={searchPopups} />
+      {hasNextPage && (
+        <div ref={observerRef}>
+          <Skeleton height={10} />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default SearchCards;
