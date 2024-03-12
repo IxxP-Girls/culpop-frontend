@@ -1,18 +1,18 @@
 import { Divider, Flex, Title } from '@mantine/core';
 import { noCommonHeight } from '../../../constants/heights';
 import BoardForm from './BoardForm';
+import { useParams } from 'react-router-dom';
+import usePostQuery from '../../../hooks/queries/usePostQuery';
 
 const Edit = () => {
+  const { id } = useParams();
+  const { postInfo } = usePostQuery(Number(id));
+
   return (
     <Flex direction={'column'} w={'100%'} style={{ height: noCommonHeight }} pb={10}>
       <Title order={3}>게시글 수정</Title>
       <Divider mb={15} mt={5} />
-      <BoardForm
-        type={'edit'}
-        category={'money'}
-        title={'블랙핑크 팝업 표 판매해요.'}
-        contents={`11월 24일 표입니다.\n 구매의사 있으시면 채팅주세요.`}
-      />
+      <BoardForm type={'edit'} boardInfo={postInfo} />
     </Flex>
   );
 };
