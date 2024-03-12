@@ -9,29 +9,31 @@ interface useGenericProps<TVariables, TData, TContext> {
 const useGenericMutation = <TVariables, TData, TContext>({
   queryKey,
   mutationFn,
-  onMutate,
+  onMutate: updated,
 }: useGenericProps<TVariables, TData, TContext>) => {
   const queryClient = useQueryClient();
 
-  return useMutation({
+  return useMutation<TData, unknown, TVariables, { previousData?: TData }>({
     mutationFn,
     async onMutate(variables) {
       await queryClient.cancelQueries({ queryKey });
-      const previousData = queryClient.getQueryData(queryKey);
+      const previousData = queryClient.getQueryData<TData>(queryKey);
 
-      if (onMutate) {
-        queryClient.setQueryData(queryKey, onMutate(variables));
+      if (updated) {
+        queryClient.setQueryData(queryKey, updated(variables));
       }
 
       return { previousData };
     },
 
-    onError() {
-      queryClient.setQueryData(queryKey, onMutate);
+    onError(error, variables, context) {
+      if (context?.previousData) {
+        queryClient.setQueryData(queryKey, context.previousData);
+      }
     },
 
     onSettled() {
-      queryClient.invalidateQueries({ queryKey: queryKey });
+      queryClient.invalidateQueries({ queryKey });
     },
   });
 };
