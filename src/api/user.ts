@@ -15,8 +15,8 @@ const fetchInterests = async (sortOption: string) => {
   return res.data;
 };
 
-const fetchProfile = async () => {
-  const res = await axios.get(`${BASE_URL}/profile`, { withCredentials: true });
+const fetchProfile = async (page: number) => {
+  const res = await axios.get(`${BASE_URL}/profile?page=${page}`, { withCredentials: true });
   return res.data;
 };
 

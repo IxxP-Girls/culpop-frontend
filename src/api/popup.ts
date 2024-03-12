@@ -13,20 +13,24 @@ const fetchPopups = async (date: string) => {
 };
 
 const fetchPopup = async (id: number) => {
-  const res = await axios.get(`${CORS_SERVER_URL}/popup/${id}`);
+  const res = await axios.get(`${CORS_SERVER_URL}/popup/${id}`, { withCredentials: true });
   return res.data;
 };
 
-const listPopups = async (area: string, startDate: string, endDate: string, page: number) => {
+const listPopups = async (area: string, startDate: string, endDate: string, pageParam: number) => {
   const res = await axios.get(
-    `${CORS_SERVER_URL}/popup/list?area=${area}&startDate=${startDate}&endDate=${endDate}&page=${page}`,
-    { withCredentials: true },
+    `${CORS_SERVER_URL}/popup/list?area=${area}&startDate=${startDate}&endDate=${endDate}&page=${pageParam}`,
+    {
+      withCredentials: true,
+    },
   );
   return res.data;
 };
 
-const searchPopups = async (word: string, page: number) => {
-  const res = await axios.get(`${CORS_SERVER_URL}/popup/search?word=${word}&page=${page}`, { withCredentials: true });
+const searchPopups = async (word: string, pageParam: number) => {
+  const res = await axios.get(`${CORS_SERVER_URL}/popup/search?word=${word}&page=${pageParam}`, {
+    withCredentials: true,
+  });
   return res.data;
 };
 
@@ -36,10 +40,12 @@ const likePopup = async (popupId: number) =>
     {},
     {
       withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-      },
     },
   );
 
-export { fetchMainCarousel, fetchPopups, fetchPopup, listPopups, searchPopups, likePopup };
+const deletePopup = async (popupId: number) =>
+  await axios.delete(`${CORS_SERVER_URL}/popup/${popupId}/like`, {
+    withCredentials: true,
+  });
+
+export { fetchMainCarousel, fetchPopups, fetchPopup, listPopups, searchPopups, likePopup, deletePopup };
