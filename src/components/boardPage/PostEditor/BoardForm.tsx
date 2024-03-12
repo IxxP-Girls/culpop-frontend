@@ -3,28 +3,34 @@ import { useForm } from '@mantine/form';
 import { FaUsers, FaEllipsisH, FaStar, FaRegMoneyBillAlt } from 'react-icons/fa';
 import { notifications } from '@mantine/notifications';
 import { useNavigate } from 'react-router-dom';
+import { editPost } from '../../../api/post';
 
+interface BoardInfo {
+  postId: number;
+  cateName: string;
+  title: string;
+  content: string;
+}
 interface BoardFormProps {
   type: string;
-  category?: string;
-  title?: string;
-  contents?: string;
+  boardInfo?: BoardInfo;
 }
 
-const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }) => {
+const BoardForm: React.FC<BoardFormProps> = ({ type, boardInfo }) => {
   const navigate = useNavigate();
 
   const form = useForm({
     initialValues: {
-      category: category || '',
-      title: title || '',
-      contents: contents || '',
+      cateName: boardInfo?.cateName || '',
+      title: boardInfo?.title || '',
+      content: boardInfo?.content || '',
     },
   });
 
   const handleSubmit = () => {
-    if (form.values.category !== '' && form.values.title !== '' && form.values.contents !== '') {
-      console.log(form.values);
+    if (form.values.cateName !== '' && form.values.title !== '' && form.values.content !== '') {
+      editPost(boardInfo?.postId || 0, form.values);
+      navigate('/mypage');
     } else {
       notifications.show({ message: '모든 항목을 입력해주세요.', color: 'red', autoClose: 1500 });
     }
@@ -39,7 +45,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
             color="green"
             data={[
               {
-                value: 'together',
+                value: '동행구해요',
                 label: (
                   <Center>
                     <FaUsers style={{ width: rem(16), height: rem(16) }} />
@@ -48,7 +54,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
                 ),
               },
               {
-                value: 'review',
+                value: '후기',
                 label: (
                   <Center>
                     <FaStar style={{ width: rem(16), height: rem(16) }} />
@@ -57,7 +63,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
                 ),
               },
               {
-                value: 'money',
+                value: '거래해요',
                 label: (
                   <Center>
                     <FaRegMoneyBillAlt style={{ width: rem(16), height: rem(16) }} />
@@ -66,7 +72,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
                 ),
               },
               {
-                value: 'etc',
+                value: '자유게시판',
                 label: (
                   <Center>
                     <FaEllipsisH style={{ width: rem(16), height: rem(16) }} />
@@ -75,7 +81,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
                 ),
               },
             ]}
-            {...form.getInputProps('category')}
+            {...form.getInputProps('cateName')}
           />
         </Flex>
         <Title order={3}>제목</Title>
@@ -95,7 +101,7 @@ const BoardForm: React.FC<BoardFormProps> = ({ type, category, title, contents }
               height: '100%',
             },
           }}
-          {...form.getInputProps('contents')}
+          {...form.getInputProps('content')}
         />
         <Flex gap={10} justify={'flex-end'} my={10}>
           <Button bg={'dark.2'} size="md" onClick={() => navigate('/boards')}>
