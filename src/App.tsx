@@ -17,6 +17,7 @@ const queryClient = new QueryClient({
     queries: {
       retry: 0,
       throwOnError: true,
+      refetchOnWindowFocus: true,
     },
   },
 });
@@ -38,7 +39,7 @@ function App() {
           <Notifications position="bottom-right" />
           <RouterProvider router={routerConfig} />
         </MantineProvider>
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
     </RecoilRoot>
   );
