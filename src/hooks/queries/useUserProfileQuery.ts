@@ -5,29 +5,16 @@ import { fetchProfile } from '../../api/user';
 
 const staleTime = 1000 * 3;
 
-interface postListProps {
-  postId: number;
-  title: string;
-  cateName: string;
-  createdAt: number;
-}
-
-interface userProfileProps {
-  username: string;
-  email: string;
-  postList: postListProps[];
-}
-
-const useUserProfileQuery = () => {
+const useUserProfileQuery = (page: number) => {
   const email = useRecoilValue(userState);
 
-  const query = useSuspenseQuery({
-    queryKey: ['@UserProfile', email],
-    queryFn: fetchProfile,
+  const { data, refetch } = useSuspenseQuery({
+    queryKey: ['@UserProfile', email, page],
+    queryFn: () => fetchProfile(page),
     staleTime,
   });
 
-  return { ...query, userProfile: query.data as userProfileProps };
+  return { userProfile: data, refetch };
 };
 
 export default useUserProfileQuery;
